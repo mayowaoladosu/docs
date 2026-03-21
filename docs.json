@@ -3,11 +3,11 @@
   "theme": "mint",
   "name": "Nubis Documentation",
   "colors": {
-    "primary": "#4A90E2",
-    "light": "#6BB3F5",
-    "dark": "#2E6DA4"
+    "primary": "#f97316",
+    "light": "#fb923c",
+    "dark": "#ea580c"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/public/images/logo/nubis_icon_orange_transparent.png",
   "navigation": {
     "tabs": [
       {
@@ -191,7 +191,10 @@
       ]
     }
   },
-  "logo": "Nubis",
+  "logo": {
+    "light": "/public/images/logo/nubis_logo_orange_transparent.png",
+    "dark": "/public/images/logo/nubis_logo_white_transparent.png"
+  },
   "navbar": {
     "links": [
       {

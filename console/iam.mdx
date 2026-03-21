@@ -1,0 +1,27 @@
+---
+title: "IAM & Access Management"
+description: "Granular control over your organization's users, roles, and permissions."
+---
+
+## Identity & Access Management (IAM)
+
+Nubis IAM allows you to securely manage access to your cloud resources at scale.
+
+### User Management
+Invite your team members to your organization and manage their lifecycle from a central dashboard.
+- **Invitations**: Send email invites with specific initial roles.
+- **Account Status**: Monitor active, pending, and deactivated users.
+- **Activity Logs**: View [Audit Logs](/console/security) for each user.
+
+### Roles and Permissions
+Nubis uses Role-Based Access Control (RBAC) with pre-defined and custom roles.
+- **Organization Roles**: High-level roles that control account-wide settings (e.g., Billing Admin).
+- **Project Roles**: Resource-level roles that control what users can do within a specific project (e.g., Compute Manager, Networking Viewer).
+
+### Service Accounts
+Create identities for automated services, CI/CD pipelines, and background workers.
+- **API Keys**: Manage secure tokens for programmatic access.
+- **Scopes**: Limit service account access to specific regions or resource types.
+
+## SSO Integration
+Enterprise customers can integrate their existing identity providers (Okta, Azure AD, Google Workspace) using SAML or OIDC for seamless, centralized authentication.

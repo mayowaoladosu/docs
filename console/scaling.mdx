@@ -1,0 +1,31 @@
+---
+title: "Scaling & Auto-scaling"
+description: "Automatically scale your resources to handle traffic demands."
+---
+
+## Scaling Strategies
+
+Nubis supports both vertical and horizontal scaling to ensure your application remains responsive under load while optimizing costs.
+
+### Vertical Scaling (Resizing)
+Change the resources (vCPU & RAM) of an existing Instance or Database.
+- **Process**: Select your resource > **Settings** > **Resize**.
+- **Downtime**: Note that resizing typically requires a short reboot.
+
+### Horizontal Scaling
+Increase the number of instances running your application to distribute the load.
+
+## Auto-scaling Groups (ASG)
+
+Auto-scaling groups automatically manage the number of instances based on demand.
+
+### Creating a Scaling Group
+1. Navigate to **Compute > Auto-scaling Groups**.
+2. **Launch Template**: Choose the instance image and size to use for new nodes.
+3. **Capacity Limits**: Set the minimum, maximum, and desired number of instances.
+4. **Scaling Policies**:
+    - **Target Tracking**: Maintain a specific CPU or Memory utilization (e.g., 70%).
+    - **Scheduled Scaling**: Scale up or down at specific times (e.g., peak business hours).
+
+### Integration with Load Balancers
+ASGs work seamlessly with Nubis Load Balancers. New instances are automatically added to the load balancer's target group as they come online.

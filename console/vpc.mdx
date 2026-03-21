@@ -1,0 +1,26 @@
+---
+title: "Virtual Private Cloud (VPC)"
+description: "Isolated networking environments for your high-security workloads."
+---
+
+## VPC Core Concepts
+
+A VPC is a private network dedicated to your Nubis organization. It is logically isolated from other virtual networks in the Nubis cloud.
+
+### Default VPC
+Every region in your account comes with a default VPC, allowing you to launch resources immediately without manual network configuration.
+
+### Custom VPCs
+For advanced security architectures, you can create custom VPCs:
+1. **IP Range**: Define your own CIDR blocks (e.g., `10.0.0.0/16`).
+2. **Subnets**: Divide your VPC into multiple subnets across different availability zones.
+3. **Routing**: Configure custom routing tables to control traffic flow between subnets and the internet.
+
+## Internal Communication
+Resources within the same VPC can communicate using private IP addresses. This traffic:
+- **Never leaves the Nubis network**.
+- **Is not billed for bandwidth**.
+- **Provides lower latency** than public internet communication.
+
+## VPC Peering
+Connect two VPCs together to allow resources in different networks to communicate as if they were in the same network, even across different regions.

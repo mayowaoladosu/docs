@@ -1,0 +1,29 @@
+---
+title: "Kubernetes (K8s)"
+description: "Deploy and manage professional Kubernetes clusters on Nubis."
+---
+
+## Managed Kubernetes (NK8s)
+
+NK8s provides a fully managed Kubernetes environment, allowing you to deploy containerized applications without managing the underlying control plane.
+
+### Creating a Cluster
+To create a new cluster, navigate to the **Kubernetes** section and click **"Create Cluster"**.
+
+1. **Region**: Choose the data center location.
+2. **Kubernetes Version**: Select from the available stable versions.
+3. **Node Pools**: Define your worker nodes.
+    - **Node Size**: CPU and RAM for each node.
+    - **Node Count**: Initial number of nodes in the pool.
+    - **Auto-scaling**: Enable automatic node pool scaling.
+
+### Managing your Cluster
+Once deployed, you can:
+- **Download Kubeconfig**: Get your credentials to use `kubectl` locally.
+- **Upgrade Version**: Seamlessly upgrade your cluster to a newer Kubernetes version.
+- **Scale Node Pools**: Add, remove, or resize node pools.
+- **Dashboard**: Use the built-in Kubernetes dashboard for real-time monitoring.
+
+## Networking in NK8s
+- **Integrated Load Balancers**: Easily expose services to the internet.
+- **VPC Native**: Your clusters run inside your private VPC for maximum security.

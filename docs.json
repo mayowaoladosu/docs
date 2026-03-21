@@ -11,52 +11,33 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Getting Started",
+        "tab": "Welcome",
         "groups": [
           {
             "group": "Introduction",
             "pages": [
               "index",
-              "quickstart"
-            ]
-          },
-          {
-            "group": "Authentication",
-            "pages": [
-              "authentication/getting-started",
-              "authentication/api-keys"
+              "quickstart",
+              "essentials/architecture"
             ]
           }
         ]
       },
       {
-        "tab": "Services",
+        "tab": "Compute",
         "groups": [
           {
-            "group": "Compute Instances",
+            "group": "Virtual Machines",
             "pages": [
-              "services/instances/overview",
-              "services/instances/create",
-              "services/instances/manage",
-              "services/instances/backup"
+              "console/instances",
+              "console/images",
+              "console/backups"
             ]
           },
           {
-            "group": "GitHub Runners",
+            "group": "Scalability",
             "pages": [
-              "services/runners/overview",
-              "services/runners/setup",
-              "services/runners/configure",
-              "services/runners/troubleshooting"
-            ]
-          },
-          {
-            "group": "Migration Support",
-            "pages": [
-              "services/migration/overview",
-              "services/migration/prepare",
-              "services/migration/execute",
-              "services/migration/verify"
+              "console/scaling"
             ]
           }
         ]
@@ -65,91 +46,131 @@
         "tab": "Networking",
         "groups": [
           {
-            "group": "Load Balancers",
+            "group": "Core Networking",
             "pages": [
-              "networking/load-balancers/overview",
-              "networking/load-balancers/create",
-              "networking/load-balancers/configure",
-              "networking/load-balancers/ssl-termination"
+              "console/vpc",
+              "console/load-balancers",
+              "console/firewalls"
             ]
           },
           {
-            "group": "IP Addresses",
+            "group": "Advanced Guru",
             "pages": [
-              "networking/ips/reserved-ips",
-              "networking/ips/floating-ips",
-              "networking/ips/assignment"
-            ]
-          },
-          {
-            "group": "Firewall",
-            "pages": [
-              "networking/firewall/overview",
-              "networking/firewall/create-rules",
-              "networking/firewall/advanced-config"
+              "console/nat-gateways",
+              "console/floating-ips",
+              "console/dns"
             ]
           }
         ]
       },
       {
-        "tab": "Billing",
+        "tab": "Containers",
         "groups": [
           {
-            "group": "Payment Methods",
+            "group": "Orchestration",
             "pages": [
-              "billing/overview",
-              "billing/paystack",
-              "billing/stripe",
-              "billing/invoices"
+              "console/kubernetes"
             ]
           },
           {
-            "group": "Usage & Limits",
+            "group": "App Platform",
             "pages": [
-              "billing/usage-tracking",
-              "billing/quotas",
-              "billing/billing-alerts"
+              "console/containers"
             ]
           }
         ]
       },
       {
-        "tab": "Administration",
+        "tab": "Data & Storage",
         "groups": [
           {
-            "group": "RBAC Management",
+            "group": "Databases",
             "pages": [
-              "administration/rbac/overview",
-              "administration/rbac/roles",
-              "administration/rbac/permissions",
-              "administration/rbac/users"
+              "console/databases"
             ]
           },
           {
-            "group": "Security",
+            "group": "Storage",
             "pages": [
-              "administration/security/access-control",
-              "administration/security/audit-logs",
-              "administration/security/sso"
+              "console/storage"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Observability",
         "groups": [
           {
-            "group": "Authentication",
+            "group": "Monitoring",
             "pages": [
-              "api-reference/authentication"
+              "console/metrics",
+              "console/logs"
             ]
           },
           {
-            "group": "Endpoints",
+            "group": "Performance",
             "pages": [
+              "console/xray",
+              "console/incidents"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Governance",
+        "groups": [
+          {
+            "group": "Identity & Security",
+            "pages": [
+              "console/iam",
+              "console/security"
+            ]
+          },
+          {
+            "group": "Resource Management",
+            "pages": [
+              "console/billing",
+              "console/advisor"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer Hub",
+        "groups": [
+          {
+            "group": "Integration",
+            "pages": [
+              "developers/sdk-js",
+              "developers/sdk-rust",
+              "developers/webhooks"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference/authentication",
               "api-reference/instances",
               "api-reference/networking",
               "api-reference/billing"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Backend Infrastructure",
+        "groups": [
+          {
+            "group": "Core Systems",
+            "pages": [
+              "backend/architecture",
+              "backend/services"
+            ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "backend/deployment"
             ]
           }
         ]

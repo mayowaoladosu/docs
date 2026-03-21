@@ -1,0 +1,20 @@
+---
+title: "NAT Gateways"
+description: "Allowing private instances to access the internet securely."
+---
+
+## Outbound Internet Access
+
+Instances in private subnets do not have public IP addresses. To allow these instances to access the internet (e.g., for software updates) without being reachable from the outside, you use a **NAT Gateway**.
+
+### How it works
+The NAT Gateway sits in a public subnet and routes traffic from your private instances to the internet, translating their private IPs to its own public IP.
+
+### Deployment
+1. Navigate to **Networking > NAT Gateways**.
+2. Click **"Create NAT Gateway"**.
+3. **Select a VPC and Subnet**: Choose a public subnet for the gateway.
+4. **Attach to Route Table**: Update your private subnet's route table to point `0.0.0.0/0` traffic to the new NAT Gateway.
+
+## High Availability
+For production environments, we recommend deploying a NAT Gateway in each availability zone to ensure redundant outbound connectivity.

@@ -1,0 +1,47 @@
+---
+title: "Backend Core Architecture"
+description: "A deep dive into the high-performance Rust services powering Nubis."
+---
+
+## Designed for Scale
+
+The Nubis backend is built as a highly distributed system using Rust, prioritizing performance, safety, and reliability. This architecture allows us to handle thousands of requests per second with minimal latency.
+
+### Core Microservices
+
+#### API Gateway (`services/api-gateway`)
+The entry point for all external traffic. It handles:
+- **Routing**: Routing requests to the appropriate internal services.
+- **Security**: Validating JWT tokens and API keys.
+- **Rate Limiting**: Protecting our infrastructure from abuse.
+- **Audit Logging**: Recording every action taken through the platform.
+
+#### Auth Service (`services/auth`)
+The central authority for identity and access management.
+- **Authentication**: Managing user logins, sessions, and multi-factor authentication.
+- **Authorization**: Implementing granular Role-Based Access Control (RBAC).
+
+#### Billing Service (`services/billing`)
+Manages all aspects of usage-based billing and payments.
+- **Usage Tracking**: Collecting real-time metrics on resource consumption.
+- **Invoice Generation**: Creating monthly invoices for users.
+- **Payment Processing**: Integrating with Stripe and Paystack.
+
+#### State Service (`services/state`)
+The source of truth for all infrastructure states.
+- **State Synchronization**: Ensuring the database stays in sync with actual provider resources.
+- **Provisioning Logic**: Coordinating the creation and deletion of resources across multiple cloud providers.
+
+## Communication Patterns
+
+Our microservices communicate through a combination of synchronous REST/gRPC calls and asynchronous event-driven patterns.
+
+- **Internal API**: High-performance internal communication using gRPC.
+- **Event Bus**: Asynchronous events (e.g., "Instance Created") are published to an event bus for downstream processing.
+
+## State Management
+
+We use a combination of persistent and ephemeral data stores:
+- **PostgreSQL**: The primary relational database for structured data.
+- **Redis**: Low-latency caching and session management.
+- **Distributed State**: Ensuring eventual consistency across our globally distributed infrastructure.

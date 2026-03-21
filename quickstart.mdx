@@ -1,86 +1,34 @@
 ---
-title: 'Quickstart'
-description: 'Get your first instance running in minutes'
+title: "Quickstart"
+description: "Get your first instance running on Nubis in under 5 minutes."
 ---
 
-## Before You Begin
+## Launch your first Instance
 
-Make sure you have:
-- A valid account with payment method added
-- An SSH key pair generated for secure access
+Nubis makes it incredibly easy to deploy virtual machines. Follow these steps to get started.
 
-## Create Your First Instance
+### 1. Sign Up
+Head over to [console.usenubis.com](https://console.usenubis.com) and create your account. You'll get immediate access to the dashboard.
 
-1. **Navigate to Instances**
-   Go to the [Dashboard](https://console.usenubis.com) and click "Create Instance"
+### 2. Create a Project
+Resources in Nubis are organized into Projects. Create your first project to keep your infrastructure organized.
 
-2. **Choose Configuration**
-   - Select your preferred region
-   - Choose an instance size (we recommend starting with 2GB RAM)
-   - Select an operating system (Ubuntu, Debian, or CentOS)
+### 3. Deploy an Instance
+Click the **"Create Instance"** button in your project dashboard.
+- **Select a Region**: Choose a location closest to your users.
+- **Select an Image**: Choose from Ubuntu, Debian, or our custom high-performance images.
+- **Select a Size**: Choose a plan that fits your resource needs.
 
-3. **Configure Networking**
-   - Assign a reserved IP or use dynamic IP
-   - Set up firewall rules for SSH (port 22)
-
-4. **Launch**
-   Click "Create Instance" and wait for provisioning (usually 1-2 minutes)
-
-## Connect via SSH
-
-Once your instance is ready, connect using SSH:
+### 4. Connect to your Instance
+Once your instance is live, you can connect via the web console or SSH:
 
 ```bash
 ssh root@your-instance-ip
 ```
 
-If you used a non-root user:
-
-```bash
-ssh username@your-instance-ip -i ~/.ssh/your-key.pem
-```
-
-## Configure Your Instance
-
-Update your system:
-
-```bash
-# For Ubuntu/Debian
-apt update && apt upgrade -y
-
-# For CentOS/RHEL
-yum update -y
-```
-
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card
-    title="Add a Load Balancer"
-    icon="scale-balanced"
-    href="/networking/load-balancers/create"
-  >
-    Distribute traffic across multiple instances
-  </Card>
-  <Card
-    title="Set Up GitHub Runners"
-    icon="code"
-    href="/services/runners/setup"
-  >
-    Deploy self-hosted CI/CD runners
-  </Card>
-  <Card
-    title="Configure Firewall"
-    icon="shield"
-    href="/networking/firewall/create-rules"
-  >
-    Secure your infrastructure
-  </Card>
-  <Card
-    title="View Billing"
-    icon="credit-card"
-    href="/billing/overview"
-  >
-    Set up payment methods
-  </Card>
-</CardGroup>
+Now that you have an instance running, you might want to:
+- [Set up a Load Balancer](/console/networking)
+- [Configure a Managed Database](/console/databases)
+- [Explore the SDKs](/developers/sdk-js)

@@ -1,0 +1,28 @@
+---
+title: "DNS & Domain Management"
+description: "Managing your global DNS zones and domain settings."
+---
+
+## Global DNS Infrastructure
+
+Nubis provides a high-performance, globally distributed Anycast DNS service that ensures your users are always connected to the nearest available resource.
+
+### Managing DNS Zones
+A DNS Zone represents a domain name (e.g., `example.com`).
+1. Navigate to **Networking > DNS**.
+2. Click **"Add Domain"**.
+3. Update your domain's nameservers to point to Nubis:
+   - `ns1.usenubis.com`
+   - `ns2.usenubis.com`
+   - `ns3.usenubis.com`
+
+### Supported Records
+We support all major DNS record types:
+- **A & AAAA**: Map hostnames to IPv4 and IPv6 addresses.
+- **CNAME**: Alias one hostname to another.
+- **MX**: Specify mail servers for your domain.
+- **TXT**: Store text-based information (SPF, DKIM, etc.).
+- **SRV**: Define service locations.
+
+## Analytics and Insights
+Monitor your DNS traffic in real-time. See request volumes, geographical distribution of queries, and most-requested records directly in the Console.

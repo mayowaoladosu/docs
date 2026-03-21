@@ -1,0 +1,23 @@
+---
+title: "Centralized Logging"
+description: "Exploring and analyzing your application and infrastructure logs."
+---
+
+## Unified Log Management
+
+Nubis Centralized Logs aggregate logs from all your resources—Instances, Containers, Databases, and Load Balancers—into a single, searchable interface.
+
+### Log Explorer
+The **Observability > Logs** page provides a powerful exploration interface powered by Loki.
+- **Real-time Streaming**: Watch your logs as they arrive.
+- **Rich Filtering**: Filter by resource ID, log level (INFO, WARN, ERROR), or custom tags.
+- **Time Range Selection**: Quickly jump to specific historical time windows.
+
+### Infrastructure Logs
+We automatically ingest logs for:
+- **System Logs**: `/var/log/syslog` and `journald` from your instances via the [Nubis Agent](/backend/services).
+- **Access Logs**: HTTP request logs from your Load Balancers and App Platform services.
+- **Database Logs**: Slow query logs and system events from managed databases.
+
+## Long-term Retention
+Define custom retention policies for your logs in the **Governance > Settings** page. You can store logs for days, months, or even years to meet compliance requirements.

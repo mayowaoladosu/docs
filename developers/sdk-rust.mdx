@@ -1,0 +1,59 @@
+---
+title: "Rust SDK"
+description: "High-performance integration with Nubis using our native Rust SDK."
+---
+
+## Native Performance with Rust
+
+The Nubis Rust SDK (`sdk-rust`) is the foundation for our own internal tools and offers the highest level of performance and type safety for your Rust-based systems.
+
+### Installation
+
+Add the SDK to your `Cargo.toml`:
+
+```toml
+[dependencies]
+nubis-sdk = "0.1"
+tokio = { version = "1", features = ["full"] }
+```
+
+### Initializing the Client
+
+The SDK is built on top of `reqwest` and `tokio` for safe, asynchronous operations.
+
+```rust
+use nubis_sdk::Client;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new("your-api-key")?;
+    
+    // Your code here...
+}
+```
+
+### Managing Infrastructure
+
+#### List Instances
+```rust
+let instances = client.instances().list().await?;
+for instance in instances {
+    println!("Instance: {} ({})", instance.name, instance.status);
+}
+```
+
+#### Create a Managed Database
+```rust
+let db = client.databases().create(CreateDbRequest {
+    name: "prod-db".to_string(),
+    engine: Engine::PostgreSQL,
+    size: "db-s-2vcpu-4gb".to_string(),
+}).await?;
+```
+
+### Why use the Rust SDK?
+
+- **Zero-Cost Abstractions**: The SDK is designed to be as fast as raw HTTP requests while providing a much cleaner API.
+- **Async/Await Native**: Fully integrated with the Tokio ecosystem.
+- **Comprehensive Types**: All Nubis resources are represented as strongly-typed structs.
+- **Internal Core**: Since we use the same SDK for our backend services, you can be sure it's battle-tested and always up-to-date.

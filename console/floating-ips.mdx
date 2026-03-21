@@ -1,0 +1,21 @@
+---
+title: "Floating IPs"
+description: "High-availability static IP addresses for your critical services."
+---
+
+## Static Networking
+
+Floating IPs are static IP addresses that can be instantly re-assigned from one [Instance](/console/instances) to another within the same region.
+
+### Use Cases
+- **Failover**: Quickly move traffic from a failed primary server to a standby server.
+- **Zero-Downtime Updates**: Deploy a new version of your app on a new instance and "flip" the Floating IP to point to it.
+- **Persistent Entry Points**: Maintain a constant IP for your own DNS records or third-party allowlists.
+
+### Management
+1. **Reserve**: Allocate a new Floating IP in your region.
+2. **Assign**: Link it to an active instance.
+3. **Reassign**: Move it to a different instance with near-zero propagated downtime.
+
+## Integration with ASGs
+Floating IPs can be automatically managed by [Auto-scaling Groups](/console/scaling) using custom scripts or our [SDKs](/developers/sdk-js).

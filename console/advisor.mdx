@@ -1,0 +1,25 @@
+---
+title: "Cloud Advisor"
+description: "Smart recommendations to optimize your cloud cost and security."
+---
+
+## Real-time Cloud Intelligence
+
+Nubis Cloud Advisor automatically analyzes your infrastructure and provides actionable recommendations to improve performance, save money, and enhance security.
+
+### Cost Optimization
+- **Underutilized Resources**: Identify instances and databases that are consistently running below 10% CPU and could be resized or deleted.
+- **Unattached Volumes**: Find block storage volumes that are not attached to any instance but are still incurring costs.
+- **Reserved Capacity**: Get suggestions on when to switch from on-demand pricing to reserved instances for long-term savings.
+
+### Security Best Practices
+- **Open Security Groups**: Identify firewall rules that allow wide-open access (e.g., `0.0.0.0/0` on port 22).
+- **MFA Enforcement**: Find users who haven't enabled multi-factor authentication.
+- **Stale API Keys**: Get notified about API tokens that haven't been used in over 90 days.
+
+### Performance Tuning
+- **Disk Latency**: Detect when your storage volumes are hitting I/O limits.
+- **Database Indexing**: Get suggestions for new indices based on your frequent query patterns.
+
+## Implementation
+Most recommendations can be implemented with a single click directly from the Cloud Advisor dashboard.

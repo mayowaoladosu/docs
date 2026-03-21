@@ -1,0 +1,42 @@
+---
+title: "Compute Instances"
+description: "Managing your Virtual Machines on Nubis."
+---
+
+## Cloud Instances
+
+Nubis Compute provides high-performance, scalable virtual machines for your applications. Our instances are optimized for various workloads, from lightweight web servers to heavy-duty data processing.
+
+### Creating an Instance
+
+You can launch a new instance through the Cloud Console in the **Compute** section.
+
+1. **Project Selection**: Choose which project the instance will belong to.
+2. **Region**: Select a data center location.
+3. **Image**: Choose a base operating system (Ubuntu, Debian, etc.).
+4. **Instance Size**: Select from our standard, compute-optimized, or memory-optimized plans.
+5. **Authentication**: Add your SSH keys for secure access.
+
+### Managing Instances
+
+Through the console interface, you have full control over your instances' lifecycle:
+- **Power Operations**: Start, stop, reboot, and hard shutdown.
+- **Resize**: Scale your instance up or down as your needs change.
+- **Backups**: Enable automated daily backups and manage snapshots.
+- **Rebuild**: Reinstall the operating system from scratch while keeping your configuration.
+
+### Monitoring Performance
+
+Real-time graphs in the console show your instance's resource usage:
+- **CPU Usage**: Monitor processing load.
+- **Memory Consumption**: Track RAM utilization.
+- **Network Traffic**: Analyze throughput and bandwidth usage.
+- **Disk I/O**: Monitor storage performance.
+
+## Advanced Features
+
+### Metadata and Cloud-Init
+Easily bootstrap your instances using cloud-init scripts to automate software installation and configuration upon first boot.
+
+### Floating IPs
+Assign static IP addresses that can be instantly moved between instances for high availability and zero-downtime updates.

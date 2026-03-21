@@ -1,0 +1,39 @@
+---
+title: "Security & Access Control"
+description: "Protecting your Nubis infrastructure and data."
+---
+
+## Account Security
+
+Nubis provides multiple layers of security to ensure your account and infrastructure remain safe.
+
+### Personal Security
+Manage your personal account security in the **Account Security** settings.
+- **Multi-Factor Authentication (MFA)**: We strongly recommend enabling MFA via TOTP (e.g., Google Authenticator).
+- **Password Management**: Update your password and manage active sessions across devices.
+
+### API Tokens & Keys
+Manage your API keys for SDK and CLI access in the **Security > API Tokens** section.
+- **Personal Tokens**: Tokens tied to your user account.
+- **Service Tokens**: Tokens designed for automated systems and CI/CD pipelines.
+- **Granular Scopes**: Assign specific permissions (e.g., Read-only, Manage Compute) to each token.
+
+## Organization Governance
+
+Organization-level security settings allow you to enforce policies across your entire team.
+
+### Role-Based Access Control (RBAC)
+Define exactly what your team members can do.
+- **Administrator**: Full access to all resources and settings.
+- **Manager**: Can manage infrastructure but cannot change billing or team settings.
+- **Viewer**: Read-only access to resources.
+- **Billing**: Access only to billing and payment information.
+
+### Audit Logs
+Track every action taken within your organization.
+- **Action History**: See who did what, when, and from where.
+- **Filtering**: Search logs by user, resource type, or action.
+- **Exporting**: Export audit logs for compliance and security reviews.
+
+## Network Security
+Don't forget to manage your [Cloud Firewalls](/console/networking) to protect your instances at the network level.

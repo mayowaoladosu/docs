@@ -1,0 +1,68 @@
+---
+title: "JavaScript SDK"
+description: "Integrate Nubis directly into your JavaScript and TypeScript applications."
+---
+
+## Getting Started with Nubis JS
+
+The Nubis JavaScript SDK (`sdk-js`) provides a powerful and type-safe way to manage your cloud infrastructure from your web applications or Node.js services.
+
+### Installation
+
+Install the SDK using your favorite package manager:
+
+```bash
+npm install @usenubis/sdk
+# or
+yarn add @usenubis/sdk
+```
+
+### Initializing the Client
+
+To get started, you'll need an API key from the Nubis Console.
+
+```typescript
+import { NubisClient } from '@usenubis/sdk';
+
+const client = new NubisClient({
+  apiKey: 'your-api-key',
+  region: 'nyc1'
+});
+```
+
+### Basic Operations
+
+#### List all Instances
+```typescript
+const instances = await client.instances.list();
+console.log(instances);
+```
+
+#### Launch a New Instance
+```typescript
+const newInstance = await client.instances.create({
+  name: 'my-app-server',
+  size: 's-1vcpu-2gb',
+  image: 'ubuntu-22-04',
+});
+```
+
+### Error Handling
+
+The SDK uses standard TypeScript errors to help you handle issues gracefully:
+
+```typescript
+try {
+  await client.instances.delete('invalid-id');
+} catch (error) {
+  if (error instanceof NubisError) {
+    console.error('API Error:', error.message);
+  }
+}
+```
+
+## Features
+
+- **Full Type Safety**: Comprehensive TypeScript definitions for all API responses and requests.
+- **Automatic Retries**: Built-in support for retrying idempotent requests on transient failures.
+- **Edge Native**: Optimized for performance in both browser and server-side environments.

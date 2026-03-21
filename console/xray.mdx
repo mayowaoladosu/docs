@@ -1,0 +1,21 @@
+---
+title: "Performance X-Ray"
+description: "Deep performance tracing and profiling for your distributed systems."
+---
+
+## distributed Tracing
+
+Nubis X-Ray helps you understand how requests flow through your distributed architecture. It allows you to visualize every hop and identify where latency is being introduced.
+
+### Request Flow Visualization
+See exactly how a request travels from the [API Gateway](/backend/services), through your internal microservices, to your [Databases](/console/databases).
+- **Service Map**: A visual representation of service-to-service communication.
+- **Latency Heatmaps**: Quickly identify which segments of your request flow are the slowest.
+
+### Continuous Profiling
+Enable continuous profiling for your Rust, Go, and Node.js applications.
+- **Stack Traces**: View CPU and Memory stack traces for your running services.
+- **Heatmaps**: Identify "hot paths" in your code that are consuming excessive resources.
+
+## Integration
+Integrating with X-Ray is easy. Our [SDKs](/developers/sdk-js) automatically handle trace propagation, and you can add custom spans to your code for even deeper visibility.

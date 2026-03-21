@@ -1,0 +1,44 @@
+---
+title: "Infrastructure & Deployment"
+description: "How Nubis is deployed and managed."
+---
+
+## Automating Infrastructure
+
+Nubis is fully automated from top to bottom. Our infrastructure is defined as code, allowing for reproducible and reliable deployments.
+
+### Infrastructure as Code (IaC)
+
+We use industry-standard tools to manage our global footprint:
+- **Docker**: Containerizing our services for consistency across environments.
+- **Kubernetes**: Orchestrating our microservices with high availability and auto-scaling.
+- **Terraform / OpenTofu**: Managing the underlying cloud resources (VMs, VPCs, Managed Services) that power the Nubis platform.
+
+### Deployment Process
+
+#### CI/CD Pipeline
+Every change to our codebase goes through a rigorous CI/CD pipeline:
+1. **Automated Testing**: Unit, integration, and end-to-end tests are run on every pull request.
+2. **Container Build**: Multi-stage Docker builds optimize our final images for production.
+3. **Staging Environment**: Changes are first deployed to a staging environment for final verification.
+4. **Blue/Green Deployment**: Production deployments use blue/green or canary strategies to ensure zero downtime.
+
+### Deployment Scripts (`/scripts`)
+
+Our `/scripts` directory contains a collection of automation scripts for common tasks:
+- **Migration Scripts**: Automated database migrations using SQLx.
+- **Provisioning Scripts**: Scripts to bootstrap new environments or scale existing ones.
+- **Maintenance Tasks**: Automated backups, log cleanup, and health checks.
+
+#### Key Scripts
+- `deploy.sh`: Unified script for deploying services to Kubernetes.
+- `db-reset.js`: Script to reset the database to a clean state for development.
+- `verify_org.ts`: Validation scripts for enterprise configurations.
+
+## Maintenance and Operations
+
+### Database Migrations
+Migrations are handled as part of the deployment process, ensuring the database schema always matches the application code.
+
+### Scaling Strategies
+Nubis supports both vertical and horizontal scaling. Our API Gateway and core services scale horizontally based on CPU/Memory usage, while our managed services can be resized vertically to handle increased loads.

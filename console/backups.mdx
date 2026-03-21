@@ -1,0 +1,29 @@
+---
+title: "Backups & Snapshots"
+description: "Protecting your data with point-in-time recovery and automated backups."
+---
+
+## Data Protection
+
+Nubis provides multiple ways to protect your data, ensuring you can recover from accidental deletions or system failures.
+
+### Automated Backups
+Enable automated daily backups for your [Instances](/console/instances) and [Databases](/console/databases).
+- **Retention**: We keep your automated backups for 7 days by default.
+- **Point-in-Time Recovery**: For Databases, you can restore to any specific minute within your backup window.
+
+### On-Demand Snapshots
+Create immediate, point-in-time copies of your [Storage Volumes](/console/storage).
+1. Select your volume.
+2. Click **"Create Snapshot"**.
+3. Snapshots are stored persistently until you manually delete them.
+
+## Recovery and Restoration
+
+### Restoring an Instance
+You can restore an instance from a backup or snapshot by:
+- **Replacing Root Disk**: Reverting your current instance to a previous state.
+- **New Instance from Backup**: Launching a completely new instance using the backup data.
+
+### Volume Recovery
+Snapshots can be used to create new [Block Storage Volumes](/console/storage), which can then be attached to any instance in the same region.

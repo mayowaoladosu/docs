@@ -1,0 +1,37 @@
+---
+title: "Backend Services"
+description: "A detailed look at the individual services in the Nubis backend."
+---
+
+## Service Overview
+
+Nubis follows a microservice-based architecture where each service has a clear, isolated responsibility. This allows us to scale and update different parts of the platform independently.
+
+### `api-gateway`
+Written in Rust, this service is the primary interface for both our Cloud Console and our REST API. It's built for speed and scales horizontally to handle high traffic volumes.
+
+### `auth-service`
+Handles user identity, tokens, and multi-tenant isolation. It ensures that every request is correctly authenticated and authorized.
+
+### `billing-service`
+A critical service that monitors resource usage (vCPU, RAM, Disk, Traffic) and calculates billing in real-time. It integrates with global payment providers to ensure seamless transactions.
+
+### `edge-worker`
+Low-latency workers that run closer to the user, handling tasks such as DNS resolution, traffic optimization, and global load balancing.
+
+### `nubis-agent`
+A lightweight agent written in Rust that runs inside customer instances. It provides:
+- **Monitoring**: CPU, Memory, and Disk usage stats.
+- **Management**: Remote execution and system configuration.
+- **Health Checks**: Ensuring services inside the instance are running correctly.
+
+### `state-service`
+The "brain" of the platform that manages the lifecycle of cloud resources. It translates high-level requests (e.g., "Create Instance") into specific provider actions across AWS, GCP, DigitalOcean, and others.
+
+## Service Discovery
+
+Our services automatically discover each other using our internal service mesh, ensuring that communication is secure, encrypted, and highly available.
+
+## Logging and Observability
+
+We use a unified logging and monitoring stack (Prometheus, Grafana, Loki) to ensure full visibility into the health and performance of every microservice.

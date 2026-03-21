@@ -1,0 +1,38 @@
+---
+title: "Webhooks"
+description: "React to infrastructure events in real-time with automated webhooks."
+---
+
+## Event-Driven Infrastructure
+
+Nubis Webhooks allow you to integrate your own internal systems with platform-wide events. When something happens in your Nubis account, we send an HTTP POST request to your designated URL.
+
+### Configuring a Webhook
+1. Navigate to **Developer Hub > Webhooks**.
+2. Click **"Add Webhook"**.
+3. **Target URL**: The endpoint in your system that will receive the events.
+4. **Secret Key**: A signing key used to verify the authenticity of the incoming requests.
+
+### Supported Events
+You can subscribe to a wide range of platform events:
+- **Compute**: `instance.started`, `instance.stopped`, `instance.resized`.
+- **Billing**: `invoice.generated`, `payment.failed`, `quota.limit_reached`.
+- **Security**: `user.logged_in`, `api_key.created`, `mfa.disabled`.
+- **Infrastructure**: `k8s.cluster_ready`, `database.backup_completed`.
+
+### Payload Format
+Webhooks are sent as JSON payloads.
+```json
+{
+  "event": "instance.resized",
+  "timestamp": "2024-03-21T19:15:00Z",
+  "resource_id": "v-12345",
+  "data": {
+    "prev_size": "s-1vcpu-2gb",
+    "new_size": "s-2vcpu-4gb"
+  }
+}
+```
+
+## Responding to Webhooks
+Your endpoint should return a `200 OK` status to acknowledge receipt. If your endpoint is down, Nubis will retry the delivery with exponential backoff for up to 24 hours.

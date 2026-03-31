@@ -1,0 +1,61 @@
+---
+title: "Volumes"
+description: "Create, attach, expand, and operate block storage volumes for Nubis Instances."
+---
+
+## What Volumes Are For
+
+Volumes are network-attached block devices that extend the storage available to an Instance. They behave like additional disks that you can format, mount, and grow over time.
+
+Use Volumes when you need:
+
+- Persistent application data outside the root disk.
+- Dedicated storage for databases, queues, search indexes, or uploads.
+- Independent storage growth without resizing compute.
+
+## Create and Attach
+
+Recommended workflow:
+
+1. Create the Volume in the same region as the target Instance.
+2. Attach it to the intended Instance.
+3. Format the disk with the filesystem your workload expects.
+4. Mount it to the correct application path.
+5. Persist the mount so it survives reboot.
+
+## Resizing
+
+Resize a Volume when the workload is growing faster than the current disk plan allows.
+
+After resizing:
+
+- Confirm the block device is visible at the new size.
+- Expand the partition if you use partitioning.
+- Expand the filesystem so the OS can use the new capacity.
+
+Increasing the provisioned size alone does not automatically expand the mounted filesystem.
+
+## Operational Guidance
+
+- Keep the root disk for OS and temporary system files.
+- Put mutable data on Volumes.
+- Monitor disk utilization and inode pressure.
+- Snapshot before high-risk filesystem or schema changes.
+- Avoid treating a single Volume as multi-writer shared storage unless the application is explicitly built for that pattern.
+
+## Backup and Recovery
+
+Volumes should have a recovery plan before they become critical:
+
+- Use snapshots for fast point-in-time protection.
+- Pair snapshots with application-aware backups for databases.
+- Test restore and reattach procedures.
+
+## Troubleshooting
+
+Check these first when a Volume does not behave as expected:
+
+1. Region mismatch between the Volume and Instance.
+2. Missing filesystem or mount configuration.
+3. Application still writing to the root disk instead of the mounted path.
+4. Resized disk without filesystem expansion.

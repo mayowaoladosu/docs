@@ -1,0 +1,62 @@
+---
+title: "Marketplace"
+description: "Launch curated application images on Nubis with clear setup, storage, networking, and post-launch guidance."
+---
+
+## What the Marketplace Is
+
+The Nubis Marketplace gives you pre-configured application images so you can launch an Instance with a known software stack already prepared.
+
+Marketplace images are a starting point, not a finished production system.
+
+## What to Check Before Launch
+
+Review these items before you create the Instance:
+
+- **App purpose**: Make sure the image matches the workload you actually want to run.
+- **Sizing**: Choose CPU, memory, and disk based on expected traffic and data growth.
+- **Storage**: Decide whether the app needs a Volume on day one.
+- **Network exposure**: Know which ports, domains, and TLS requirements apply.
+- **Backups**: Turn on backups if the app stores data that cannot be recreated.
+- **Ownership**: Decide who is responsible for updates, credentials, and monitoring.
+
+## First Login Workflow
+
+After the Instance becomes active:
+
+1. Connect through SSH or the console, depending on the app guidance.
+2. Confirm the application process is healthy.
+3. Rotate default or generated credentials where applicable.
+4. Attach and mount extra storage if the workload needs persistent data paths.
+5. Point DNS records to the new Instance if the app is publicly accessible.
+6. Validate logs, public routes, and health checks before handing the service to users.
+
+## Common Post-Launch Tasks
+
+Most marketplace apps still need additional work after first boot:
+
+- Domain and DNS configuration.
+- TLS termination.
+- Storage relocation from root disk to a Volume.
+- SMTP, webhook, or API key configuration.
+- Admin account setup.
+- Backup validation.
+- Monitoring and alerting.
+
+## Choosing Between Marketplace and Custom Images
+
+Use **Marketplace** when you want a fast, documented launch path for a known app.
+
+Use **Custom Images** when you need:
+
+- Your own hardened base image.
+- Internal tooling preinstalled.
+- Repeatable team-specific templates.
+- A controlled golden-image workflow.
+
+## Production Guidance
+
+- Keep development experiments separate from production apps.
+- Do not leave important state only on the root disk if the app will grow.
+- Review what the image includes before exposing it publicly.
+- Treat each marketplace Instance as a standard workload that still needs patching, observability, and access review.

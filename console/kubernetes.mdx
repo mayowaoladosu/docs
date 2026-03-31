@@ -1,29 +1,98 @@
 ---
-title: "Kubernetes (K8s)"
-description: "Deploy and manage professional Kubernetes clusters on Nubis."
+title: "Kubernetes"
+description: "Run managed Kubernetes clusters on Nubis with clear guidance for planning, scaling, upgrades, and production operations."
 ---
 
-## Managed Kubernetes (NK8s)
+## Managed Kubernetes on Nubis
 
-NK8s provides a fully managed Kubernetes environment, allowing you to deploy containerized applications without managing the underlying control plane.
+Nubis Kubernetes is designed for teams that want managed control planes with direct control over worker node sizing, autoscaling, networking, and release cadence.
 
-### Creating a Cluster
-To create a new cluster, navigate to the **Kubernetes** section and click **"Create Cluster"**.
+Use it when you need:
 
-1. **Region**: Choose the data center location.
-2. **Kubernetes Version**: Select from the available stable versions.
-3. **Node Pools**: Define your worker nodes.
-    - **Node Size**: CPU and RAM for each node.
-    - **Node Count**: Initial number of nodes in the pool.
-    - **Auto-scaling**: Enable automatic node pool scaling.
+- Multiple services running under a single cluster boundary.
+- Standard Kubernetes APIs and `kubectl` workflows.
+- Rolling deployments, horizontal scaling, and workload isolation.
+- Infrastructure that can grow from development to production without changing platforms.
 
-### Managing your Cluster
-Once deployed, you can:
-- **Download Kubeconfig**: Get your credentials to use `kubectl` locally.
-- **Upgrade Version**: Seamlessly upgrade your cluster to a newer Kubernetes version.
-- **Scale Node Pools**: Add, remove, or resize node pools.
-- **Dashboard**: Use the built-in Kubernetes dashboard for real-time monitoring.
+## Cluster Planning
 
-## Networking in NK8s
-- **Integrated Load Balancers**: Easily expose services to the internet.
-- **VPC Native**: Your clusters run inside your private VPC for maximum security.
+Before you create a cluster, define these choices up front:
+
+### Region
+
+Choose the region closest to your users or the services your workloads depend on. Keep the cluster in the same region as supporting databases, Spaces buckets, and network infrastructure when low latency matters.
+
+### Version
+
+Use the newest stable version approved by your team. Avoid delaying upgrades until you are several releases behind, because node pool, add-on, and API deprecation work becomes harder later.
+
+### Node Pools
+
+Split node pools by workload type instead of putting everything onto one generic pool.
+
+Examples:
+
+- General web services.
+- Background jobs.
+- Stateful or I/O-heavy workloads.
+- Burst workloads with autoscaling enabled.
+
+## Create Workflow
+
+The recommended creation sequence is:
+
+1. Select region and Kubernetes version.
+2. Create at least one system/general-purpose node pool.
+3. Set sensible min and max node counts if autoscaling is enabled.
+4. Tag the cluster by environment and team.
+5. Download kubeconfig and validate access immediately.
+6. Deploy ingress, monitoring, secrets management, and backup tooling before onboarding critical workloads.
+
+## Networking
+
+Plan cluster networking before exposing workloads publicly.
+
+- Keep private service-to-service traffic inside your VPC where possible.
+- Expose public applications through controlled ingress and load balancers.
+- Separate internal-only services from public entrypoints.
+- Document DNS ownership before cutover.
+
+## Scaling Strategy
+
+Use multiple scaling layers appropriately:
+
+- **Horizontal Pod Autoscaling** for application replicas.
+- **Cluster autoscaling** for worker-node growth and shrinkage.
+- **Dedicated node pools** for workloads with different resource shapes.
+
+Do not rely on node scaling alone to solve poor pod resource requests or missing application-level autoscaling.
+
+## Day-2 Operations
+
+Once the cluster is live, the regular operating rhythm should include:
+
+- Version review and upgrade planning.
+- Node pool right-sizing.
+- Cost review by workload and environment.
+- Log, metric, and trace validation.
+- Backup and restore tests for stateful workloads.
+- Pod security, secret rotation, and RBAC review.
+
+## Production Checklist
+
+- Use at least separate dev, staging, and production clusters or namespaces with strong policy boundaries.
+- Keep resource requests and limits defined for every workload.
+- Ensure ingress, TLS, and DNS ownership are documented.
+- Make backups explicit for stateful services; Kubernetes itself is not your data-backup plan.
+- Validate alerting before launch, not after the first incident.
+
+## Troubleshooting Priorities
+
+When a cluster is unhealthy, check in this order:
+
+1. Regional health and provider status.
+2. Node readiness and autoscaler behavior.
+3. Namespace events and failed pods.
+4. Ingress or load-balancer configuration.
+5. DNS records and certificate status.
+6. Recent version, chart, or workload changes.

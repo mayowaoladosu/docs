@@ -1,26 +1,84 @@
 ---
-title: "Storage Solutions"
-description: "Managing your data with Block and Object storage."
+title: "Storage"
+description: "Plan, deploy, and operate Nubis storage services with clear guidance for block and object storage."
 ---
 
-## Cloud Storage
+## Storage on Nubis
 
-Nubis provides multiple storage options to handle everything from OS disks to massive datasets.
+Nubis gives you two primary storage models:
 
-### Block Storage (Volumes)
-Block storage volumes provide additional storage for your compute instances. They behave like physical disks that you can attach and move between instances.
+- **Volumes** for low-latency block storage attached to Instances.
+- **Spaces** for S3-compatible object storage used by assets, backups, logs, media, and static content.
 
-- **High Performance**: Optimized for low-latency I/O.
-- **Flexibility**: Resize volumes as your data grows.
-- **Snapshots**: Create point-in-time copies for backups and cloning.
+Use this page as the decision guide before you create either one.
 
-### Object Storage (Spaces)
-Our S3-compatible object storage service is perfect for storing large amounts of unstructured data like images, logs, and backups.
+## Choose the Right Product
 
-- **S3 Compatible**: Use your existing S3 tools and libraries without modification.
-- **Highly Scalable**: Scale from GBs to PBs seamlessly.
-- **Static Site Hosting**: Host your static websites directly from Object Storage.
+### Use Volumes when you need
 
-## Choosing the Right Storage
-- **Block Storage**: Best for active applications, databases, and general-purpose OS storage.
-- **Object Storage**: Best for media assets, static backups, and data lakes.
+- Extra disk capacity for an Instance without rebuilding it.
+- Persistent data for databases, queues, search indexes, or file processing jobs.
+- Predictable block-device semantics such as partitioning, formatting, and mounting.
+- Expansion of storage independently from compute size.
+
+### Use Spaces when you need
+
+- Durable object storage for uploads, archives, logs, media, backups, or static files.
+- Public or private file delivery over HTTPS.
+- CDN-backed asset distribution.
+- S3-compatible tooling and SDK workflows.
+
+## Architecture Guidance
+
+### Volumes
+
+Volumes are best when your workload expects a filesystem mounted inside Linux. They should be treated as application data disks, not as a replacement for object storage or multi-writer shared filesystems.
+
+Recommended pattern:
+
+1. Keep the root disk for OS and bootstrap packages.
+2. Put mutable application data on a dedicated Volume.
+3. Use snapshots or application-level backups for recovery.
+4. Resize storage independently as the dataset grows.
+
+### Spaces
+
+Spaces are best when your workload stores blobs rather than mounted filesystems. Application uploads, rendered media, Terraform state, static assets, export archives, and log sinks all fit naturally here.
+
+Recommended pattern:
+
+1. Store unstructured files in Spaces.
+2. Serve public assets through the CDN when latency matters.
+3. Use versioning for rollback-sensitive buckets.
+4. Keep private data behind scoped access keys and bucket policies.
+
+## Operations Checklist
+
+Before production launch, confirm the following:
+
+- Region choice matches where your Instances, databases, and users are located.
+- Backup and recovery expectations are defined before data lands in production.
+- Access control is scoped to teams, service accounts, or application-specific credentials.
+- Cost ownership is clear by project and by environment.
+- Lifecycle rules or retention policies are configured for data that grows continuously.
+
+## Cost and Billing
+
+Storage cost is easiest to manage when each product is treated differently:
+
+- **Volumes** scale primarily with provisioned capacity.
+- **Spaces** scale with stored data, requests, and egress-sensitive delivery patterns.
+- **CDN traffic, snapshots, backups, and cross-service replication** should be reviewed separately from base storage cost.
+
+## Operational Best Practices
+
+- Keep production data in dedicated projects with clear ownership.
+- Tag storage resources by environment, team, and workload.
+- Do not mix hot database storage and archival object storage in the same operating model.
+- Test restore procedures, not just create procedures.
+- Review growth trends monthly so storage expansion does not happen as an emergency task.
+
+## Next Guides
+
+- [Volumes](/console/volumes): Create, attach, mount, resize, and recover block storage.
+- [Spaces](/console/spaces): Configure buckets, access, CDN, versioning, and object-delivery workflows.

@@ -1,0 +1,72 @@
+---
+title: "Spaces"
+description: "Store and serve object data on Nubis with S3-compatible buckets, access control, CDN delivery, and lifecycle management."
+---
+
+## What Spaces Are For
+
+Spaces is the Nubis object storage layer for unstructured data.
+
+Use it for:
+
+- User uploads and media libraries.
+- Build artifacts and backups.
+- Logs, exports, and archives.
+- Static sites and CDN-backed assets.
+
+## Bucket Setup
+
+The recommended setup sequence is:
+
+1. Create the bucket in the region closest to your workload or users.
+2. Decide whether the bucket is private by default.
+3. Create scoped access keys for applications rather than reusing broad credentials.
+4. Enable CDN only when public distribution is actually required.
+5. Configure metadata, caching, lifecycle, and versioning deliberately.
+
+## Access and Security
+
+Keep Spaces secure by default:
+
+- Use private buckets for internal application data.
+- Generate access keys per application or service account.
+- Use presigned URLs for temporary access to private objects.
+- Apply bucket policies with narrow permissions.
+- Configure CORS only for domains that truly need browser access.
+
+## Performance and Delivery
+
+For public assets:
+
+- Enable the CDN.
+- Set the right cache headers.
+- Use predictable object naming.
+- Version assets instead of relying only on cache purges.
+
+For private workloads:
+
+- Keep objects private.
+- Optimize request patterns in the client or application layer.
+- Avoid excessive small-object churn when batching is possible.
+
+## Lifecycle and Cost Control
+
+Spaces can grow quietly if you do not manage retention. Review:
+
+- Old backups and exports.
+- Versioned objects.
+- Multipart upload cleanup.
+- CDN traffic patterns.
+- Public assets that should be compressed or archived.
+
+Lifecycle rules should be part of production setup, not a later cleanup task.
+
+## Troubleshooting
+
+If an application cannot use Spaces correctly, check:
+
+1. Region and endpoint configuration.
+2. Access key scope and secret rotation.
+3. Bucket policy and object ACL expectations.
+4. CORS or presigned URL expiry settings.
+5. CDN cache behavior versus origin state.

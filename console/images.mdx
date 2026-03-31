@@ -1,29 +1,83 @@
 ---
-title: "Images & Marketplace"
-description: "Managing your custom operating system images and pre-configured applications."
+title: "Images"
+description: "Use marketplace images, snapshots, and custom imports to launch Nubis Instances with the right operating environment."
 ---
+
+## Image Types
+
+Nubis supports three main image paths:
+
+- **Operating system images** for clean Linux installs.
+- **Marketplace images** for application-ready Instances with guided setup.
+- **Custom images and snapshots** for cloning your own environments.
+
+## Marketplace Images
+
+Marketplace images are the fastest route when you want an application stack with a pre-arranged starting point.
+
+Typical use cases:
+
+- WordPress, Ghost, and CMS deployments.
+- Docker-based application hosts.
+- Databases and admin tools for self-managed teams.
+- Developer platforms, workflow tools, and observability stacks.
+
+### Marketplace Launch Workflow
+
+1. Choose the app image.
+2. Review what is included before launch.
+3. Select the correct region and Instance size for the workload.
+4. Attach Volumes if persistent application data will outgrow the root disk.
+5. Enable backups if the workload is not fully disposable.
+6. Complete the first-login checklist immediately after the Instance becomes active.
+
+### Before You Go Live
+
+Do not treat a marketplace app as finished at first boot. After launch, you should still:
+
+- Rotate or confirm credentials.
+- Bind domains and DNS records.
+- Configure TLS and public ingress.
+- Attach storage where needed.
+- Review logs and health checks.
+- Confirm update and backup ownership.
 
 ## Custom Images
 
-Nubis allows you to create and manage your own custom operating system images, enabling you to deploy pre-configured environments instantly.
+Use custom images when you want your own golden image strategy.
 
-### Creating a Custom Image
-You can create a custom image from any existing [Instance](/console/instances) or [Snapshot](/console/backups).
-1. Navigate to your Instance.
-2. Select **"Capture Image"**.
-3. Choose a name and tags for your image.
+Good examples:
 
-Once created, your image will appear in the **Compute > Images > Custom** tab.
+- Internal base images with agents, hardening, and packages already installed.
+- Region-specific workload templates.
+- Repeatable staging or demo environments.
 
-### Marketplace Images
-We provide a wide range of pre-configured images for popular software stacks:
-- **Web Servers**: Nginx, Apache, LiteSpeed.
-- **App Frameworks**: Node.js, Python/Django, Docker.
-- **One-Click Apps**: WordPress, Ghost, Strapi.
+### Import by URL
 
-## Private Registry
-Your custom images are stored in your organization's private registry, ensuring they are only accessible to your team members.
+Import by URL is best when you already host a bootable disk image externally and want Nubis to ingest it into your private catalog.
 
-## Image Lifecycle Management
-- **Deprecation**: Mark older images as deprecated to prevent new deployments while keeping them for reference.
-- **Sharing**: Share images across different [Projects](/console/projects) within your organization.
+Before importing:
+
+- Confirm the image format is supported by your workflow.
+- Place the file in stable object storage or an accessible HTTPS endpoint.
+- Choose the destination region intentionally.
+- Record the source checksum so the imported artifact can be verified.
+
+## Snapshots
+
+Snapshots are the safest path when you want to clone an existing Instance state.
+
+Use snapshots when you need:
+
+- Fast environment duplication.
+- Rollback checkpoints before risky changes.
+- A restore source for new replacement Instances.
+
+Snapshots capture state; they do not replace a full backup policy for critical data services.
+
+## Governance
+
+- Tag images by environment, owner, and purpose.
+- Deprecate old templates instead of leaving them ambiguous.
+- Keep production-grade images separate from experiments.
+- Review access to custom images regularly if multiple projects share them.

@@ -31,6 +31,7 @@
             "pages": [
               "console/instances",
               "console/images",
+              "console/marketplace",
               "console/backups"
             ]
           },
@@ -92,7 +93,9 @@
           {
             "group": "Storage",
             "pages": [
-              "console/storage"
+              "console/storage",
+              "console/volumes",
+              "console/spaces"
             ]
           }
         ]

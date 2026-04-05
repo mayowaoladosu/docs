@@ -65,18 +65,12 @@
         ]
       },
       {
-        "tab": "Containers",
+        "tab": "Orchestration",
         "groups": [
           {
-            "group": "Orchestration",
+            "group": "Kubernetes",
             "pages": [
               "console/kubernetes"
-            ]
-          },
-          {
-            "group": "App Platform",
-            "pages": [
-              "console/containers"
             ]
           }
         ]

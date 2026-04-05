@@ -1,0 +1,35 @@
+---
+title: "Cloud Firewalls"
+description: "Control inbound and outbound traffic for project resources with reusable firewall policies."
+---
+
+## Firewall model
+
+Nubis firewalls let you define traffic rules once and attach them to the resources that need them. They are a core part of the project networking layer alongside VPCs, load balancers, floating IPs, and DNS.
+
+## What you can do
+
+- Create and delete project-scoped firewalls.
+- Define inbound and outbound rules by protocol, port, and source or destination range.
+- Attach or detach firewalls from virtual machines as your topology changes.
+- Keep access policy separate from app deployment logic.
+
+## Recommended workflow
+
+<Steps>
+  <Step title="Start from network intent">
+    Define what should be reachable from the public internet, what should stay private, and which internal services need east-west access.
+  </Step>
+  <Step title="Create the firewall">
+    Add only the rules needed for the workload to function, then attach it to the relevant instances.
+  </Step>
+  <Step title="Review after each topology change">
+    Revisit firewall attachments and rules whenever you add new load balancers, databases, or public entry points.
+  </Step>
+</Steps>
+
+## Good operating habits
+
+- Keep public ingress narrow and explicit.
+- Use separate firewalls for different workload classes instead of one oversized shared ruleset.
+- Pair firewall review with DNS and load-balancer changes so exposure stays intentional.

@@ -1,47 +1,71 @@
 ---
-title: "Backend Core Architecture"
-description: "A deep dive into the high-performance Rust services powering Nubis."
+title: "Backend Architecture"
+description: "How the Rust services, workers, and provider adapters power Nubis."
 ---
 
-## Designed for Scale
+## Service map
 
-The Nubis backend is built as a highly distributed system using Rust, prioritizing performance, safety, and reliability. This architecture allows us to handle thousands of requests per second with minimal latency.
+The Nubis backend is built as a set of focused Rust services plus shared provider crates. The code in this repo shows a control plane optimized for infrastructure APIs, background orchestration, and operational visibility.
 
-### Core Microservices
+<CardGroup cols={2}>
+  <Card title="API Gateway">
+    Authenticated ingress, route handling, rate limiting, request metrics, and background workers for the control plane.
+  </Card>
+  <Card title="Auth Service">
+    Exchanges upstream identity into Nubis tokens and serves JWKS metadata for verification.
+  </Card>
+  <Card title="Billing Service">
+    Subscription state transitions, invoice generation, payment processing, and billing email workflows.
+  </Card>
+  <Card title="Infra Orchestrator">
+    Async lifecycle operations for resource provisioning, start, stop, delete, and event-driven orchestration.
+  </Card>
+  <Card title="State Service">
+    Drift detection and reconciliation between Nubis state and provider state.
+  </Card>
+  <Card title="Provider Crates">
+    Shared integrations for DigitalOcean, Cloudflare DNS, NameSilo, Better Stack, and related platform dependencies.
+  </Card>
+</CardGroup>
 
-#### API Gateway (`services/api-gateway`)
-The entry point for all external traffic. It handles:
-- **Routing**: Routing requests to the appropriate internal services.
-- **Security**: Validating JWT tokens and API keys.
-- **Rate Limiting**: Protecting our infrastructure from abuse.
-- **Audit Logging**: Recording every action taken through the platform.
+## Request and orchestration flow
 
-#### Auth Service (`services/auth`)
-The central authority for identity and access management.
-- **Authentication**: Managing user logins, sessions, and multi-factor authentication.
-- **Authorization**: Implementing granular Role-Based Access Control (RBAC).
+```mermaid
+graph TD
+    Console["Console, SDKs, automation"] --> Gateway["API Gateway"]
+    Gateway --> Auth["Auth service"]
+    Gateway --> Billing["Billing service"]
+    Gateway --> Infra["Infra orchestrator"]
+    Gateway --> State["State reconciler"]
+    Gateway --> Postgres["PostgreSQL"]
+    Gateway --> Redis["Redis"]
+    Gateway --> Workers["Gateway workers"]
+    Workers --> Webhooks["Webhook dispatcher"]
+    Workers --> Scaling["Scaling engine"]
+    Workers --> Healer["Self-healing loop"]
+    Workers --> Rates["Exchange-rate worker"]
+    Infra --> DO["DigitalOcean adapters"]
+    State --> DO
+    Gateway --> Cloudflare["Cloudflare DNS"]
+    Gateway --> NameSilo["NameSilo registrar"]
+    Gateway --> BetterStack["Metrics and log integrations"]
+```
 
-#### Billing Service (`services/billing`)
-Manages all aspects of usage-based billing and payments.
-- **Usage Tracking**: Collecting real-time metrics on resource consumption.
-- **Invoice Generation**: Creating monthly invoices for users.
-- **Payment Processing**: Integrating with Stripe and Paystack.
+## What the gateway already exposes
 
-#### State Service (`services/state`)
-The source of truth for all infrastructure states.
-- **State Synchronization**: Ensuring the database stays in sync with actual provider resources.
-- **Provisioning Logic**: Coordinating the creation and deletion of resources across multiple cloud providers.
+The current gateway routes in this repo cover:
 
-## Communication Patterns
+- Organizations, members, invitations, and project lifecycle.
+- VMs, disks, backups, snapshots, templates, and scaling groups.
+- Networks, subnets, NAT gateways, security groups, firewalls, floating IPs, and load balancers.
+- DNS zones, records, domain search, registration, renewal, and domain control actions.
+- Managed databases and Kubernetes clusters.
+- Billing status, invoices, payment methods, credits, spend limits, and usage exports.
+- API keys, audit logs, service accounts, SSO, outgoing webhooks, support tickets, and observability alerts.
 
-Our microservices communicate through a combination of synchronous REST/gRPC calls and asynchronous event-driven patterns.
+## Operational design choices
 
-- **Internal API**: High-performance internal communication using gRPC.
-- **Event Bus**: Asynchronous events (e.g., "Instance Created") are published to an event bus for downstream processing.
-
-## State Management
-
-We use a combination of persistent and ephemeral data stores:
-- **PostgreSQL**: The primary relational database for structured data.
-- **Redis**: Low-latency caching and session management.
-- **Distributed State**: Ensuring eventual consistency across our globally distributed infrastructure.
+- **Background-first orchestration**: long-running infrastructure changes are pushed into workers instead of blocking user requests.
+- **Event-driven updates**: workers and realtime invalidation keep the Console responsive after mutations.
+- **Provider abstraction**: shared crates centralize provider-specific logic so product handlers can stay focused on Nubis behavior.
+- **Governance in the control plane**: IAM, billing, quotas, and support live beside infrastructure resources rather than as separate systems.

@@ -1,91 +1,88 @@
 ---
-title: 'RBAC Overview'
-description: 'Role-based access control for teams'
+title: "Roles & Permissions"
+description: "How Nubis RBAC works for members, custom roles, and service accounts."
 ---
 
-## What is RBAC?
+## Role-based access control in Nubis
 
-Role-Based Access Control (RBAC) allows you to manage permissions for team members through roles. Instead of assigning individual permissions, you assign roles that contain predefined permission sets.
+Role-Based Access Control lets you manage access through roles instead of one-off permission decisions. In Nubis, roles are attached to organization members and can also back service accounts used for automation.
 
-## Key Concepts
+## Key concepts
 
 ### Roles
-Predefined sets of permissions that determine what a user can do:
-- **Owner**: Full account access
-- **Admin**: Manage resources and team members
-- **Developer**: Create and manage resources
-- **Viewer**: Read-only access
+
+The repo currently defines system roles around this model:
+
+- **Owner**: Full access across the organization, including IAM and billing.
+- **Admin**: Broad administrative access without full owner-level control.
+- **Member**: General access that is usually narrower and more read-oriented by default.
 
 ### Permissions
-Granular actions that can be performed:
-- Create/delete instances
-- Manage billing
-- View resources
-- Manage team members
 
-### Users
-Team members who are assigned roles.
+Permissions are granular capabilities grouped across services such as:
 
-## Default Roles
+- Compute and scaling
+- Networking and DNS
+- Storage and databases
+- Billing and credits
+- IAM, service accounts, and webhooks
+
+### Identities
+
+Team members and service accounts are the identities that receive roles.
+
+## Default roles
 
 <CardGroup cols={2}>
   <Card title="Owner">
     - Full account control
     - Billing management
-    - Delete account
-    - Manage all roles
+    - Role and member administration
+    - Full infrastructure access
   </Card>
   <Card title="Admin">
-    - Create/manage all resources
+    - Create and manage resources
     - Manage team members
     - View billing
-    - Cannot delete account
+    - Broad operational access
   </Card>
-  <Card title="Developer">
-    - Create/manage instances
-    - Manage networking
-    - Cannot access billing
-    - No team management
-  </Card>
-  <Card title="Viewer">
-    - View all resources
-    - Generate reports
-    - Cannot make changes
-    - No billing access
+  <Card title="Member">
+    - Common day-to-day access
+    - Usually oriented around read or scoped operations
+    - Can be replaced or narrowed by custom roles
+    - Good base for standard collaborators
   </Card>
 </CardGroup>
 
-## Getting Started
+## Getting started
 
 <Steps>
-  <Step title="Invite Team Members">
-    Go to Settings → Team and click "Invite Member"
+  <Step title="Invite team members">
+    Open the organization members view and invite the teammate by email.
   </Step>
-  <Step title="Assign Role">
-    Select a role for the new team member
+  <Step title="Assign a role">
+    Start with the narrowest role that still lets the person do their job.
   </Step>
-  <Step title="Send Invitation">
-    The member will receive an email invitation
+  <Step title="Review access regularly">
+    Revisit role membership as teams, projects, and automation needs change.
   </Step>
 </Steps>
 
-## Custom Roles
+## Custom roles
 
-Create custom roles with specific permissions:
+Create custom roles when the default role set is too broad or too narrow:
 
-1. Navigate to **Settings** → **Roles**
-2. Click **"Create Role"**
-3. Name your role
-4. Select permissions
-5. Save the role
+1. Start from the permissions your team actually uses.
+2. Group them into a role that matches a real responsibility.
+3. Reuse that role for both teammates and service accounts where appropriate.
+4. Review role membership regularly as teams and systems change.
 
-## Best Practices
+## Best practices
 
 <Warning>
-Start with the principle of least privilege. Grant only necessary permissions.
+Start with least privilege. Grant only the permissions a person or automation path actually needs.
 </Warning>
 
-- Use viewer roles for contractors and auditors
-- Limit billing access to trusted administrators
-- Review team access quarterly
-- Remove access immediately when team members leave
+- Keep billing and IAM access limited to trusted operators.
+- Use service accounts instead of personal keys for CI/CD and automation.
+- Remove stale identities quickly when teammates leave or systems are retired.

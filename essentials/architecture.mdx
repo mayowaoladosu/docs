@@ -1,43 +1,65 @@
 ---
 title: "System Architecture"
-description: "An overview of how Nubis is built and how its components interact."
+description: "A high-level view of the Nubis control plane, backend services, and provider integrations."
 ---
 
-## The Nubis Ecosystem
+## The Nubis platform model
 
-Nubis is composed of three primary layers that work together to provide a seamless cloud experience.
+Nubis is a control plane for cloud infrastructure. The repo behind these docs shows three major layers working together:
 
-### 1. Landing & Marketing (`steady-umbrella`)
-Our public-facing site, built with Next.js for SEO and performance. It serves as the gateway for new users to learn about the platform, check pricing, and read our latest updates.
+- **Public surfaces** such as the marketing site, docs, API reference, and status page.
+- **Operator surfaces** such as the Nubis Console, API keys, webhooks, and SDK-based automation.
+- **Backend services** that authenticate requests, orchestrate resource changes, reconcile state, and process billing.
 
-### 2. Cloud Console (`new-frontend`)
-A powerful, React-based single-page application that serves as the primary management interface. It communicates directly with our API Gateway to provide real-time infrastructure management.
-
-### 3. Backend Services (`services`)
-The heart of Nubis, a collection of high-performance microservices primarily written in Rust.
-
-- **API Gateway**: The entry point for all requests, handling authentication and routing.
-- **Auth Service**: Manages user identity, sessions, and RBAC.
-- **Billing Service**: Handles payments, usage tracking, and invoicing.
-- **State Service**: Manages the distributed state of the platform.
-- **Nubis Agent**: A lightweight agent running on instances for monitoring and management.
-
-## Data Flow
+## Control plane flow
 
 ```mermaid
 graph TD
-    User([User]) --> Landing[Landing Page - Next.js]
-    User --> Console[Cloud Console - React]
-    Console --> Gateway[API Gateway - Rust]
-    SDK[SDKs / CLI] --> Gateway
-    Gateway --> Auth[Auth Service]
-    Gateway --> Billing[Billing Service]
-    Gateway --> State[State Service]
-    State --> Provider[Cloud Providers / Hypervisors]
+    User["Users and team members"] --> Website["Website, Docs, Status"]
+    User --> Console["Nubis Console (`new-frontend`)"]
+    User --> Automation["API keys, SDKs, webhooks"]
+    Console --> Gateway["API Gateway (`services/api-gateway`)"]
+    Automation --> Gateway
+    Gateway --> Auth["Auth service (`services/auth`)"]
+    Gateway --> Billing["Billing service (`services/billing`)"]
+    Gateway --> Infra["Infra orchestrator (`services/infra`)"]
+    Gateway --> State["State reconciler (`services/state`)"]
+    Gateway --> Data["PostgreSQL + Redis"]
+    Infra --> Providers["Provider adapters"]
+    State --> Providers
+    Providers --> DO["DigitalOcean compute, databases, Kubernetes, networking, spaces"]
+    Providers --> Cloudflare["Cloudflare DNS"]
+    Providers --> NameSilo["NameSilo domains"]
+    Providers --> BetterStack["Observability integrations"]
 ```
 
-## Technology Stack
+## What each layer does
 
-- **Frontend**: React, Next.js, Tailwind CSS, TypeScript.
-- **Backend**: Rust (Axum, SQLx), PostgreSQL, Redis.
-- **Infrastructure**: Docker, Kubernetes, Terraform.
+### Public and operator surfaces
+
+- `steady-umbrella` handles product marketing and public web presence.
+- `docs` is the Mintlify-based documentation surface.
+- `new-frontend` is the Console that operators use to manage projects, workloads, billing, and support.
+
+### Control plane services
+
+- `services/api-gateway` is the main ingress layer for authenticated product traffic.
+- `services/auth` exchanges upstream identity into Nubis JWTs and exposes JWKS metadata.
+- `services/billing` manages subscription state, invoices, and payment operations.
+- `services/infra` performs asynchronous infrastructure lifecycle work.
+- `services/state` reconciles desired state and actual provider state.
+
+### Shared platform concerns
+
+- PostgreSQL stores control-plane state, billing metadata, IAM data, tickets, domains, and audit history.
+- Redis is used for fast shared state such as cache and rate-limiting support.
+- Background workers handle realtime invalidation, webhook delivery, billing aggregation, scaling decisions, exchange rates, and self-healing loops.
+
+## Why this matters for the docs
+
+This architecture is why Nubis docs are organized around:
+
+- **Organizations and projects** as the unit of ownership.
+- **Core services** such as instances, storage, networking, databases, and Kubernetes.
+- **Operations** such as observability, billing, support, and incident handling.
+- **Automation** through API keys, webhooks, SDKs, and service accounts.

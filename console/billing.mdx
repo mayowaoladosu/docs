@@ -1,28 +1,42 @@
 ---
-title: "Billing & Invoices"
-description: "Managing your payments and tracking your cloud usage."
+title: "Billing, Usage & Spend Controls"
+description: "Manage subscriptions, invoices, usage analytics, credits, and guardrails from the Console."
 ---
 
-## Unified Billing
+## Billing workspace
 
-Nubis provides a transparent, usage-based billing system. You only pay for what you use, with detailed tracking for every resource.
+The Billing area in the Nubis Console is where finance and engineering meet. It centralizes payment setup, invoice history, usage visibility, verification state, and cost guardrails for the active organization.
 
-### Payment Methods
-Manage your payment sources in **Billing > Payment Methods**.
-- **Credit/Debit Cards**: Securely add and manage cards through Stripe.
-- **Regional Payments**: Support for Paystack (Nigeria, Ghana, South Africa).
-- **Primary Method**: Designate a primary card for automatic monthly payments.
+## What you can do here
 
-### Invoices
-All past and current invoices are available in the **Billing > Invoices** section.
-- **PDF Download**: Download official invoices for your accounting records.
-- **Billing History**: View a complete history of all charges and payments.
+- **Manage subscriptions** and check whether the organization is active, suspended, or waiting on billing action.
+- **Add or replace payment methods** for the provider your organization uses.
+- **Download invoices** and review historical collections.
+- **Inspect usage** through summaries, breakdowns, time-series data, and exports.
+- **Track credits** and redeem eligible vouchers.
+- **Set spend limits** at the organization or project level.
 
-### Usage and Quotas
-Track your resource consumption in real-time.
-- **Usage Metrics**: See how much you're spending on Compute, Storage, and Networking.
-- **Project Breakdown**: View costs per project.
-- **Quotas**: Manage your resource limits (e.g., maximum number of Instances). You can request quota increases directly through the Console.
+## Recommended operating pattern
 
-## Billing Alerts
-Set up automated alerts to notify you when your monthly spending reaches a specific threshold, helping you avoid unexpected costs.
+<Steps>
+  <Step title="Confirm payment readiness">
+    Make sure the organization has a valid payment method and has completed any verification requirements before launching production workloads.
+  </Step>
+  <Step title="Review usage often">
+    Use usage summaries and breakdowns to understand which services and projects are driving cost.
+  </Step>
+  <Step title="Set guardrails early">
+    Apply spend limits before multiple teams or environments begin creating resources in parallel.
+  </Step>
+</Steps>
+
+## What billing data is organized around
+
+- **Organization-wide visibility** for subscriptions, invoices, credits, payment method, and global limits.
+- **Project-level visibility** for resource-specific spend and optional project spend caps.
+- **Service-level visibility** across compute, networking, storage, databases, backups, and other metered resources.
+
+## Related workflows
+
+- Use [Billing Overview](/billing/overview) when you are setting up billing for the first time.
+- Use [Support Plans & Tickets](/console/support) if billing state needs manual help from Nubis support.

@@ -1,34 +1,48 @@
 ---
-title: "Quickstart"
-description: "Get your first instance running on Nubis in under 5 minutes."
+title: "Launch your first workload"
+description: "Go from a fresh Nubis workspace to a running workload with a clean project setup."
 ---
 
-## Launch your first Instance
+## Start with a clean project
 
-Nubis makes it incredibly easy to deploy virtual machines. Follow these steps to get started.
+The fastest way to succeed on Nubis is to set up the workspace first and the workload second. That gives you cleaner billing, better access control, and fewer surprises later.
 
-### 1. Sign Up
-Head over to [console.usenubis.com](https://console.usenubis.com) and create your account. You'll get immediate access to the dashboard.
+### 1. Create or select an organization
+Use an organization for the team or business unit that will own billing, support, and governance.
 
-### 2. Create a Project
-Resources in Nubis are organized into Projects. Create your first project to keep your infrastructure organized.
+### 2. Create a project
+Resources in Nubis are grouped by project. A common pattern is one project per environment, such as `dev`, `staging`, and `prod`.
 
-### 3. Deploy an Instance
-Click the **"Create Instance"** button in your project dashboard.
-- **Select a Region**: Choose a location closest to your users.
-- **Select an Image**: Choose from Ubuntu, Debian, or our custom high-performance images.
-- **Select a Size**: Choose a plan that fits your resource needs.
+### 3. Confirm billing readiness
+Before provisioning, make sure the organization has an active payment method and has cleared any verification steps required for billing.
 
-### 4. Connect to your Instance
-Once your instance is live, you can connect via the web console or SSH:
+### 4. Choose the right launch path
+Pick the resource that matches the job:
+
+- **Instances** for app servers, workers, cron jobs, and general-purpose compute.
+- **Managed Databases** for stateful data services.
+- **Kubernetes** for container orchestration.
+- **Storage** for volumes or object buckets.
+
+### 5. Configure the workload
+For an instance launch, decide on:
+
+- **Region** closest to users or dependent services.
+- **Image or template** that matches the runtime you want.
+- **Instance size** based on CPU, memory, and storage requirements.
+- **Networking** such as VPC placement, firewalls, and floating IP needs.
+- **Protection** such as backups and spend controls.
+
+### 6. Connect and validate
+Once the workload is active, connect using the Console or SSH and confirm that logs, metrics, and access rules look correct.
 
 ```bash
 ssh root@your-instance-ip
 ```
 
-## Next Steps
+## Next steps
 
-Now that you have an instance running, you might want to:
-- [Set up a Load Balancer](/console/networking)
-- [Configure a Managed Database](/console/databases)
-- [Explore the SDKs](/developers/sdk-js)
+- [Add DNS and domains](/console/dns)
+- [Configure backups and snapshots](/console/backups)
+- [Set up observability and alerts](/console/metrics)
+- [Explore the API and SDKs](/api-reference/introduction)

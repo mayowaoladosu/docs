@@ -1,33 +1,67 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API & Automation Overview"
+description: "Use Nubis programmatically with API keys, service accounts, webhooks, and SDKs."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Build on Nubis without clicking through the Console
 
-## Welcome
+Every major Nubis workflow is designed to be scriptable. The control plane routes in this repo are versioned under `/api/v1` and are organized around organizations, projects, and resource families.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+<CardGroup cols={2}>
+  <Card
+    title="Authentication"
+    icon="key-round"
+    href="/api-reference/authentication"
+  >
+    Learn how Nubis authenticates personal API keys and automated workloads.
+  </Card>
+  <Card
+    title="Instances API"
+    icon="server"
+    href="/api-reference/instances"
+  >
+    Provision and manage compute resources scoped to a project.
+  </Card>
+  <Card
+    title="Networking API"
+    icon="network"
+    href="/api-reference/networking"
+  >
+    Automate networks, firewalls, floating IPs, DNS, and load balancers.
+  </Card>
+  <Card
+    title="Billing API"
+    icon="wallet"
+    href="/api-reference/billing"
+  >
+    Track subscriptions, invoices, payment methods, usage, and spend controls.
+  </Card>
+</CardGroup>
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+## Automation building blocks
 
-## Authentication
+- **Personal API keys** for user-scoped automation.
+- **Service accounts** for CI/CD, bots, and background integrations.
+- **Outgoing webhooks** for lifecycle and mutation events in your own systems.
+- **SDKs** when you want typed clients instead of raw HTTP calls.
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## Resource model
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+Nubis APIs generally follow this pattern:
+
+- **Organization-scoped routes** for membership, billing, limits, IAM, and support.
+- **Project-scoped routes** for compute, storage, networking, databases, Kubernetes, templates, and domains.
+- **Account-scoped routes** for API keys and audit logs.
+
+Example authentication pattern:
+
+```bash
+curl https://api.usenubis.com/api/v1/api-keys \
+  -H "Authorization: Bearer NUBIS_API_KEY"
 ```
+
+## Recommended starting points
+
+- Start with [API Authentication](/api-reference/authentication) to choose the right credential model.
+- Use [Webhooks](/developers/webhooks) when you want Nubis to push state changes into your own systems.
+- Explore the [JavaScript SDK](/developers/sdk-js) or [Rust SDK](/developers/sdk-rust) for typed integrations.

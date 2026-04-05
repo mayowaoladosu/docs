@@ -1,27 +1,38 @@
 ---
-title: "IAM & Access Management"
-description: "Granular control over your organization's users, roles, and permissions."
+title: "IAM, Service Accounts & SSO"
+description: "Manage roles, permissions, service accounts, API access, and single sign-on for your organization."
 ---
 
-## Identity & Access Management (IAM)
+## Identity and access in Nubis
 
-Nubis IAM allows you to securely manage access to your cloud resources at scale.
+Nubis IAM gives organizations one model for human access and machine access. The same control plane covers members, roles, service accounts, API keys, SSO configuration, and audit visibility.
 
-### User Management
-Invite your team members to your organization and manage their lifecycle from a central dashboard.
-- **Invitations**: Send email invites with specific initial roles.
-- **Account Status**: Monitor active, pending, and deactivated users.
-- **Activity Logs**: View [Audit Logs](/console/security) for each user.
+## Member access
 
-### Roles and Permissions
-Nubis uses Role-Based Access Control (RBAC) with pre-defined and custom roles.
-- **Organization Roles**: High-level roles that control account-wide settings (e.g., Billing Admin).
-- **Project Roles**: Resource-level roles that control what users can do within a specific project (e.g., Compute Manager, Networking Viewer).
+- Invite members into the organization with role-based access from the start.
+- Review membership and invitation state in one place.
+- Keep human access tied to organization-level policy instead of sharing credentials.
 
-### Service Accounts
-Create identities for automated services, CI/CD pipelines, and background workers.
-- **API Keys**: Manage secure tokens for programmatic access.
-- **Scopes**: Limit service account access to specific regions or resource types.
+## Roles and permissions
 
-## SSO Integration
-Enterprise customers can integrate their existing identity providers (Okta, Azure AD, Google Workspace) using SAML or OIDC for seamless, centralized authentication.
+Nubis supports:
+
+- **System roles** such as Owner, Admin, and Member.
+- **Custom roles** for organizations that need tighter separation of duties.
+- **Fine-grained permissions** across compute, networking, storage, billing, IAM, and automation surfaces.
+
+## Service accounts
+
+Create non-human identities for CI/CD, bots, internal tooling, and controlled automation.
+
+- Bind service accounts to roles instead of handing out broad user credentials.
+- Use API keys for programmatic access.
+- Rotate or revoke machine credentials without disturbing teammate access.
+
+## SSO integration
+
+Organizations that need centralized identity can configure SSO settings in IAM and verify the setup before rolling it out broadly.
+
+## Audit posture
+
+IAM changes matter most when you can see them later. Pair role changes, API key management, and service account usage with audit-log review and least-privilege defaults.

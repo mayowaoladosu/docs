@@ -1,26 +1,45 @@
 ---
-title: "Monitoring & Metrics"
-description: "Gain deep insights into your infrastructure performance with real-time metrics."
+title: "Observability, Metrics & Alerts"
+description: "Track platform status, resource performance, logs, and alert policies from the Console."
 ---
 
-## Real-time Observability
+## Observability surface
 
-Nubis provides a comprehensive monitoring solution that gives you visibility into every layer of your cloud infrastructure.
+The Observability area in Nubis brings together platform health, resource metrics, logs, incident history, and alerting workflows so operators can move from detection to action quickly.
 
-### Standard Infrastructure Metrics
-We automatically collect performance data for all your resources:
-- **CPU & Memory**: Track utilization and identify bottlenecks.
-- **Disk I/O**: Monitor storage performance and latency.
-- **Network Bandwidth**: Track inbound and outbound traffic.
-- **Database Performance**: Monitor query latency and connections.
+## What you can monitor
 
-### Custom Dashboards
-Create your own visualizations in the **Observability > Dashboards** section.
-1. **Add Widget**: Choose from line charts, bar charts, heatmaps, and more.
-2. **Select Metric**: Pick any metric from our wide catalog.
-3. **Define Scope**: Filter by project, region, or specific resource tags.
+- **Platform status** for global health and incident visibility.
+- **Compute and project metrics** such as utilization, throughput, and resource performance over time.
+- **Resource logs** for workloads like virtual machines and managed databases.
+- **Alert policies and delivery history** so teams can see what fired and where notifications were sent.
 
 ## Alerting
-Never miss a performance issue. Configure automated alerts to notify you via Email, Slack, or PagerDuty when metrics cross specific thresholds.
-- **Static Thresholds**: Alert when a value exceeds a limit (e.g., CPU > 90%).
-- **Anomaly Detection**: Alert when metrics deviate from their normal historical patterns.
+
+Nubis supports alert destinations, alert policies, and event history at the organization level. Use alerting when you want an operator-facing signal instead of waiting for a dashboard check.
+
+Typical patterns include:
+
+- CPU or memory thresholds on critical workloads.
+- Project-level spikes in usage or error rate.
+- Follow-up actions after incident creation or degraded platform status.
+
+## Recommended workflow
+
+<Steps>
+  <Step title="Check platform status first">
+    If multiple resources look unhealthy at once, confirm whether the issue is platform-wide before debugging a single workload.
+  </Step>
+  <Step title="Inspect metrics and logs together">
+    Use metrics to identify when a problem started and logs to understand what changed.
+  </Step>
+  <Step title="Turn repeat incidents into alerts">
+    Once a failure pattern is clear, promote it into an alert policy so the team is notified earlier next time.
+  </Step>
+</Steps>
+
+## Related guides
+
+- [Centralized Logging](/console/logs)
+- [Incident Tracking](/console/incidents)
+- [Performance X-Ray](/console/xray)

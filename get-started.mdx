@@ -1,0 +1,75 @@
+---
+title: "Set up your Nubis environment"
+description: "Create your workspace, enable billing, and launch your first Nubis resources."
+---
+
+## Onboarding
+
+Nubis is built around a simple operating model: your team works inside an organization, that organization owns one or more projects, and each project contains the resources you run in production.
+
+<Steps>
+  <Step title="Create your account">
+    Sign in to the Nubis Console and complete your initial account profile.
+  </Step>
+  <Step title="Create or join an organization">
+    Organizations are the top-level boundary for billing, membership, support plans, and shared governance.
+  </Step>
+  <Step title="Create your first project">
+    Projects scope workloads, networking, billing visibility, and API activity. Most teams create one project per product or environment.
+  </Step>
+  <Step title="Add billing and verification">
+    Attach a payment method, complete any required billing or phone verification, and decide on spend controls before launching production resources.
+  </Step>
+  <Step title="Invite your team">
+    Use [roles and permissions](/administration/rbac/overview) to give each teammate the right access level from day one.
+  </Step>
+</Steps>
+
+## What the Console guides you through
+
+<CardGroup cols={2}>
+  <Card
+    title="Workspace setup"
+    icon="building-2"
+    href="/console/organizations"
+  >
+    Create organizations, manage members, and configure settings that apply across projects.
+  </Card>
+  <Card
+    title="Project setup"
+    icon="folders"
+    href="/console/projects"
+  >
+    Group resources by product, environment, or team so operations and billing stay understandable.
+  </Card>
+  <Card
+    title="Billing"
+    icon="wallet"
+    href="/billing/overview"
+  >
+    Add payment methods, review invoices, redeem credits, and configure spend limits.
+  </Card>
+  <Card
+    title="Security & IAM"
+    icon="shield-check"
+    href="/console/iam"
+  >
+    Manage RBAC, API keys, service accounts, SSO, and audit visibility from one place.
+  </Card>
+</CardGroup>
+
+## Launch your first resources
+
+Once billing is enabled, you can start with any of these:
+
+- [Compute Instances](/services/instances/create) for app servers, workers, and general-purpose workloads.
+- [Managed Databases](/console/databases) for stateful services in the same control plane.
+- [Storage](/console/storage) for block volumes, buckets, and access keys.
+- [Networking](/console/networking) for VPC-style networking, firewalls, load balancers, DNS, and domains.
+- [Kubernetes](/console/kubernetes) when you want orchestrated clusters instead of single instances.
+
+## Need help?
+
+- Review [Billing Overview](/billing/overview) if resource creation is being gated by billing state or verification.
+- Check [Support Plans & Tickets](/console/support) to understand the help channels available to your organization.
+- Visit [status.usenubis.com](https://status.usenubis.com) for platform health and incident history.

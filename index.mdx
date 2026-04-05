@@ -1,64 +1,96 @@
 ---
 title: "Welcome to Nubis"
-description: "The next-generation cloud computing platform for modern engineering teams."
+description: "Cloud infrastructure for African builders."
 ---
 
-## Reimagining Cloud Infrastructure
+<Frame>
+  <img src="/images/og-image.png" alt="Nubis cloud platform visual." style={{ borderRadius: '0.75rem' }} />
+</Frame>
 
-Nubis provides a seamless, high-performance environment for deploying and scaling your applications. From our intuitive Cloud Console to our robust Rust-based backend, every component is designed for speed, security, and developer joy.
+## One control plane for modern infrastructure
+
+Nubis gives startups and operator-led teams one place to run instances, databases, Kubernetes, storage, networking, domains, billing, and team access. The documentation follows the same model as the product: onboard once, create projects, launch workloads, then manage cost, security, and operations from the same workspace.
 
 <CardGroup cols={2}>
   <Card
-    title="Cloud Console"
-    icon="desktop"
-    href="/console/overview"
-  >
-    Manage your instances, databases, and networking through our premium web interface.
-  </Card>
-  <Card
-    title="Backend Architecture"
-    icon="layer-group"
-    href="/backend/architecture"
-  >
-    Explore the high-performance Rust microservices powering the Nubis ecosystem.
-  </Card>
-  <Card
-    title="Developer Hub"
-    icon="code"
-    href="/developers/sdk-js"
-  >
-    Integrate directly with our SDKs and comprehensive REST API.
-  </Card>
-  <Card
-    title="Quickstart Guide"
+    title="Set up your environment"
     icon="rocket"
-    href="/quickstart"
+    href="/get-started"
   >
-    Go from zero to deployed in under 5 minutes.
+    Create your organization, project, billing profile, and first resources.
+  </Card>
+  <Card
+    title="Core services"
+    icon="server"
+    href="/console/instances"
+  >
+    Launch instances, databases, Kubernetes, storage, and networking from the Console.
+  </Card>
+  <Card
+    title="Operations"
+    icon="activity"
+    href="/console/metrics"
+  >
+    Track metrics, logs, incidents, billing, spend limits, and support workflows.
+  </Card>
+  <Card
+    title="API & automation"
+    icon="code-xml"
+    href="/api-reference/introduction"
+  >
+    Use API keys, webhooks, SDKs, and service accounts to automate Nubis.
   </Card>
 </CardGroup>
 
-## Platform Pillars
+## What Nubis covers
 
-### Performance First
-Our backend is built with Rust and optimized for low-latency operations, ensuring your infrastructure responds as fast as your code.
+<CardGroup cols={2}>
+  <Card
+    title="Compute"
+    href="/services/instances/overview"
+  >
+    Virtual machines, backups, snapshots, scaling groups, and curated images for repeatable launches.
+  </Card>
+  <Card
+    title="Data & storage"
+    href="/console/storage"
+  >
+    Managed databases, block volumes, object storage buckets, and access keys.
+  </Card>
+  <Card
+    title="Networking"
+    href="/console/networking"
+  >
+    VPC-style networking, subnets, NAT gateways, firewalls, load balancers, floating IPs, DNS, and domains.
+  </Card>
+  <Card
+    title="Governance"
+    href="/console/iam"
+  >
+    Organizations, projects, RBAC, API keys, audit logs, service accounts, and support plans.
+  </Card>
+</CardGroup>
 
-### Security by Design
-Enterprise-grade RBAC, automated audit logging, and isolated networking environments come standard.
-
-### Developer Experience
-Whether you prefer our web console, CLI, or SDKs, Nubis meets you where you work.
-
-## Next Steps
+## Start here
 
 <Steps>
-  <Step title="Create an Account">
-    Sign up at [console.usenubis.com](https://console.usenubis.com) to get started.
+  <Step title="Create or select an organization">
+    Use the [organization guide](/console/organizations) to define the workspace that owns billing, members, and shared policy.
   </Step>
-  <Step title="Deploy your First Instance">
-    Follow our [Quickstart Guide](/quickstart) to launch your first virtual machine.
+  <Step title="Create a project">
+    Projects are the unit Nubis uses for scoping workloads, networking, and cost visibility. Start with one project per environment or product.
   </Step>
-  <Step title="Explore the API">
-    Dive into our [API Reference](/api-reference/authentication) for advanced integrations.
+  <Step title="Add billing and verification">
+    Set a payment method, confirm any required billing checks, and decide on spend controls before you launch production workloads.
+  </Step>
+  <Step title="Launch resources">
+    Provision your first [instance](/services/instances/create), database, Kubernetes cluster, bucket, or DNS zone from the Console.
   </Step>
 </Steps>
+
+## Continue exploring
+
+- [Get started](/get-started) for the onboarding flow.
+- [System architecture](/essentials/architecture) for the platform design.
+- [Billing overview](/billing/overview) for payment methods, invoices, credits, and spend controls.
+- [API & automation overview](/api-reference/introduction) for programmatic access.

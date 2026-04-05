@@ -1,11 +1,15 @@
 ---
-title: 'Billing Overview'
-description: 'Manage payments, invoices, and usage'
+title: "Billing Overview"
+description: "Subscriptions, payment methods, usage, invoices, credits, and spend controls."
 ---
 
-## Payment Methods
+## Billing in Nubis
 
-We support multiple payment methods for your convenience:
+Nubis billing is designed to make infrastructure usage easier to understand before it becomes expensive. Your organization owns subscription state, payment methods, invoices, verification state, and spend controls.
+
+## Payment providers
+
+Nubis supports multiple payment providers. Availability can depend on your account configuration and region.
 
 <CardGroup cols={2}>
   <Card
@@ -13,67 +17,62 @@ We support multiple payment methods for your convenience:
     icon="credit-card"
     href="/billing/paystack"
   >
-    Optimized for African markets with local payment methods
+    Local-friendly payment flows for organizations using Paystack-backed billing.
   </Card>
   <Card
     title="Stripe"
     icon="credit-card"
     href="/billing/stripe"
   >
-    Global payment processing with support for 130+ currencies
+    Global card-based payment workflows for accounts using Stripe-backed billing.
   </Card>
 </CardGroup>
 
-## Billing Cycle
+## What you can manage
 
-- **Hourly Billing**: Pay for resources only when they're running
-- **Monthly**: Dedicated servers and reserved instances
-- **Annual**: Save up to 20% with yearly plans
+- **Subscriptions**: Understand whether the organization is active, suspended, or awaiting action.
+- **Payment methods**: Attach, rotate, or remove the default collection method.
+- **Invoices**: View open and historical invoices and download invoice PDFs.
+- **Usage analytics**: Inspect summary, breakdown, history, and exportable usage data.
+- **Credits**: Track balances and redeem eligible voucher codes.
+- **Spend controls**: Set organization-level or project-level caps before usage drifts too far.
 
-## Understanding Your Invoice
-
-Each invoice includes:
-- **Compute**: Instance usage charges
-- **Storage**: Block storage and snapshots
-- **Networking**: Load balancers and bandwidth
-- **Other**: Reserved IPs, additional services
-
-## Payment Methods Management
+## A safe billing setup sequence
 
 <Steps>
-  <Step title="Add Payment Method">
-    Go to Billing → Payment Methods and add a card
+  <Step title="Add a payment method">
+    Connect the billing provider your organization uses and confirm the default collection method.
   </Step>
-  <Step title="Set as Default">
-    Choose your preferred payment method
+  <Step title="Clear verification gates">
+    Complete any billing, KYC, or phone-verification prompts that appear for the organization.
   </Step>
-  <Step title="Auto-Billing">
-    Enable automatic payments to avoid service interruptions
+  <Step title="Set spend controls">
+    Configure alerts and spend limits before you invite the rest of the team or launch production workloads.
   </Step>
 </Steps>
 
-## Usage Tracking
+## What shows up in usage
 
-Monitor your resource consumption:
-- Real-time usage dashboard
-- Cost breakdown by service
-- Budget alerts and notifications
+- **Compute** such as instances, backups, and scaling-related resources.
+- **Data services** such as databases, volumes, and object storage.
+- **Networking** such as load balancers, floating IPs, and related network services.
+- **Platform charges** such as subscription or support-plan related items where applicable.
 
-## Need Help?
+## Need help?
 
 <CardGroup cols={2}>
   <Card
-    title="View Invoices"
-    icon="file-invoice"
-    href="/billing/invoices"
+    title="Console billing guide"
+    icon="wallet"
+    href="/console/billing"
   >
-    Access your billing history
+    Learn where to manage usage, credits, invoices, and spend controls in the Console.
   </Card>
   <Card
-    title="Set Up Alerts"
-    icon="bell"
-    href="/billing/billing-alerts"
+    title="Support plans"
+    icon="headset"
+    href="/console/support"
   >
-    Get notified about usage limits
+    Understand ticketing, escalation paths, and plan-based support expectations.
   </Card>
 </CardGroup>

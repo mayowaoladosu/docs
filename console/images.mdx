@@ -1,19 +1,21 @@
 ---
-title: "Images"
-description: "Use marketplace images, snapshots, and custom imports to launch Nubis Instances with the right operating environment."
+title: "Images, Snapshots & Templates"
+description: "Use official images, marketplace apps, snapshots, custom imports, and launch templates to standardize deployments."
 ---
 
-## Image Types
+## Image types
 
-Nubis supports three main image paths:
+Nubis supports multiple launch artifacts so teams can move at different levels of abstraction:
 
-- **Operating system images** for clean Linux installs.
-- **Marketplace images** for application-ready Instances with guided setup.
-- **Custom images and snapshots** for cloning your own environments.
+- **Official images** for clean operating-system-first deployments.
+- **Marketplace images** for application-ready starting points.
+- **Custom images** for golden-image workflows.
+- **Snapshots** for cloning an existing workload state.
+- **Launch templates** for repeatable provisioning inputs across teams and environments.
 
-## Marketplace Images
+## Official and marketplace images
 
-Marketplace images are the fastest route when you want an application stack with a pre-arranged starting point.
+Use official images when you want a predictable base and marketplace images when you want a faster path to a known stack.
 
 Typical use cases:
 
@@ -22,46 +24,24 @@ Typical use cases:
 - Databases and admin tools for self-managed teams.
 - Developer platforms, workflow tools, and observability stacks.
 
-### Marketplace Launch Workflow
+### Marketplace launch workflow
 
 1. Choose the app image.
-2. Review what is included before launch.
+2. Review what the image includes before launch.
 3. Select the correct region and Instance size for the workload.
-4. Attach Volumes if persistent application data will outgrow the root disk.
+4. Attach volumes if persistent application data will outgrow the root disk.
 5. Enable backups if the workload is not fully disposable.
 6. Complete the first-login checklist immediately after the Instance becomes active.
 
-### Before You Go Live
+## Custom images
 
-Do not treat a marketplace app as finished at first boot. After launch, you should still:
-
-- Rotate or confirm credentials.
-- Bind domains and DNS records.
-- Configure TLS and public ingress.
-- Attach storage where needed.
-- Review logs and health checks.
-- Confirm update and backup ownership.
-
-## Custom Images
-
-Use custom images when you want your own golden image strategy.
+Use custom images when you want your own golden-image strategy.
 
 Good examples:
 
 - Internal base images with agents, hardening, and packages already installed.
 - Region-specific workload templates.
 - Repeatable staging or demo environments.
-
-### Import by URL
-
-Import by URL is best when you already host a bootable disk image externally and want Nubis to ingest it into your private catalog.
-
-Before importing:
-
-- Confirm the image format is supported by your workflow.
-- Place the file in stable object storage or an accessible HTTPS endpoint.
-- Choose the destination region intentionally.
-- Record the source checksum so the imported artifact can be verified.
 
 ## Snapshots
 
@@ -71,9 +51,18 @@ Use snapshots when you need:
 
 - Fast environment duplication.
 - Rollback checkpoints before risky changes.
-- A restore source for new replacement Instances.
+- A restore source for new replacement instances.
 
 Snapshots capture state; they do not replace a full backup policy for critical data services.
+
+## Launch templates
+
+Launch templates help teams standardize recurring configuration, such as:
+
+- Preferred image or marketplace starting point.
+- Sizing conventions by workload class.
+- Networking defaults for recurring services.
+- Backup and storage expectations for a given environment.
 
 ## Governance
 

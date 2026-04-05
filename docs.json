@@ -11,12 +11,13 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Welcome",
+        "tab": "Home",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Overview",
             "pages": [
               "index",
+              "get-started",
               "quickstart",
               "essentials/architecture"
             ]
@@ -27,18 +28,22 @@
         "tab": "Compute",
         "groups": [
           {
-            "group": "Virtual Machines",
+            "group": "Instances & Images",
             "pages": [
               "console/instances",
+              "services/instances/overview",
+              "services/instances/create",
               "console/images",
               "console/marketplace",
               "console/backups"
             ]
           },
           {
-            "group": "Scalability",
+            "group": "Elasticity & Automation",
             "pages": [
-              "console/scaling"
+              "console/scaling",
+              "services/runners/overview",
+              "services/runners/setup"
             ]
           }
         ]
@@ -49,13 +54,15 @@
           {
             "group": "Core Networking",
             "pages": [
+              "console/networking",
               "console/vpc",
-              "console/load-balancers",
+              "networking/load-balancers/overview",
+              "networking/load-balancers/create",
               "console/firewalls"
             ]
           },
           {
-            "group": "Advanced Guru",
+            "group": "Edge & Routing",
             "pages": [
               "console/nat-gateways",
               "console/floating-ips",
@@ -65,23 +72,13 @@
         ]
       },
       {
-        "tab": "Orchestration",
-        "groups": [
-          {
-            "group": "Kubernetes",
-            "pages": [
-              "console/kubernetes"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Data & Storage",
         "groups": [
           {
-            "group": "Databases",
+            "group": "Managed Data",
             "pages": [
-              "console/databases"
+              "console/databases",
+              "console/kubernetes"
             ]
           },
           {
@@ -95,20 +92,26 @@
         ]
       },
       {
-        "tab": "Observability",
+        "tab": "Operations",
         "groups": [
           {
-            "group": "Monitoring",
+            "group": "Observability",
             "pages": [
               "console/metrics",
-              "console/logs"
+              "console/logs",
+              "console/incidents",
+              "console/xray",
+              "console/advisor"
             ]
           },
           {
-            "group": "Performance",
+            "group": "Billing & Support",
             "pages": [
-              "console/xray",
-              "console/incidents"
+              "billing/overview",
+              "console/billing",
+              "billing/paystack",
+              "billing/stripe",
+              "console/support"
             ]
           }
         ]
@@ -117,17 +120,20 @@
         "tab": "Governance",
         "groups": [
           {
-            "group": "Identity & Security",
+            "group": "Workspace",
             "pages": [
-              "console/iam",
-              "console/security"
+              "console/organizations",
+              "console/projects"
             ]
           },
           {
-            "group": "Resource Management",
+            "group": "Identity & Security",
             "pages": [
-              "console/billing",
-              "console/advisor"
+              "console/iam",
+              "administration/rbac/overview",
+              "authentication/getting-started",
+              "authentication/api-keys",
+              "console/security"
             ]
           }
         ]
@@ -136,29 +142,33 @@
         "tab": "Developer Hub",
         "groups": [
           {
-            "group": "Integration",
+            "group": "API & Automation",
             "pages": [
-              "developers/sdk-js",
-              "developers/sdk-rust",
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/instances",
+              "api-reference/networking",
+              "api-reference/billing",
               "developers/webhooks"
             ]
           },
           {
-            "group": "API Reference",
+            "group": "SDKs & Tools",
             "pages": [
-              "api-reference/authentication",
-              "api-reference/instances",
-              "api-reference/networking",
-              "api-reference/billing"
+              "developers/sdk-js",
+              "developers/sdk-rust",
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
             ]
           }
         ]
       },
       {
-        "tab": "Backend Infrastructure",
+        "tab": "Platform",
         "groups": [
           {
-            "group": "Core Systems",
+            "group": "Architecture",
             "pages": [
               "backend/architecture",
               "backend/services"
@@ -176,14 +186,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Support",
-          "href": "https://console.usenubis.com/support",
-          "icon": "headset"
+          "anchor": "Pricing",
+          "href": "https://www.usenubis.com/pricing",
+          "icon": "badge-dollar-sign"
         },
         {
           "anchor": "Status",
           "href": "https://status.usenubis.com",
           "icon": "circle-activity"
+        },
+        {
+          "anchor": "Console",
+          "href": "https://console.usenubis.com",
+          "icon": "square-terminal"
         }
       ]
     }
@@ -195,31 +210,36 @@
   "navbar": {
     "links": [
       {
+        "label": "Pricing",
+        "href": "https://www.usenubis.com/pricing"
+      },
+      {
         "label": "Support",
-        "href": "mailto:support@usenubis.com"
+        "href": "https://usenubis.com/support"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Console",
       "href": "https://console.usenubis.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/usenubis"
+      "x": "https://x.com/usenubis",
+      "linkedin": "https://www.linkedin.com/company/usenubis"
     }
   }
 }

@@ -1,0 +1,40 @@
+---
+title: "Load balancers"
+description: "Distribute traffic across Nubis Compute backends with clearer patterns for exposure, health, and recovery."
+---
+
+## Put the load balancer between users and change
+
+Load balancers reduce single-instance risk and give you a cleaner place to manage public traffic, TLS termination, and backend distribution.
+
+## What load balancers are for
+
+- High-availability application entry points
+- Routing traffic to healthy backends
+- Keeping public exposure consistent during deployments
+- Centralizing traffic behavior instead of configuring it per instance
+
+## Recommended setup flow
+
+<Steps>
+  <Step title="Decide the public entry pattern">
+    Confirm which applications need internet-facing access and which can remain private behind internal layers.
+  </Step>
+  <Step title="Define the backend group">
+    Attach the set of instances that should receive traffic for the service.
+  </Step>
+  <Step title="Add listeners and health checks">
+    Configure the ports, protocols, and health signals that match how the app actually behaves.
+  </Step>
+  <Step title="Validate before production traffic">
+    Test unhealthy-node behavior, timeout expectations, and recovery patterns before the service is under load.
+  </Step>
+</Steps>
+
+## Continue with
+
+- [Server groups](/services/nubis-compute/traffic/server-groups)
+- [Health checks](/services/nubis-compute/traffic/health-checks)
+- [Listeners](/services/nubis-compute/traffic/listeners)
+- [Load balancer overview](/networking/load-balancers/overview)
+

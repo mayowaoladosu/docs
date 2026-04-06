@@ -1,0 +1,22 @@
+---
+title: "Listeners"
+description: "Configure the traffic entry points that tell a Nubis load balancer how to accept and forward requests."
+---
+
+## Listeners define how traffic enters the service
+
+A listener describes the port, protocol, and forwarding behavior used by the load balancer. It is the layer that turns a public or internal endpoint into an actual application path.
+
+## Listener design questions
+
+- Which ports should accept traffic
+- Which protocols the service needs
+- Whether TLS should terminate at the load balancer
+- Which backend group should receive that traffic
+
+## Good listener habits
+
+- Keep listener configuration aligned with the application deployment model.
+- Review listener rules when domains, certificates, or backend ports change.
+- Avoid leaving old listeners active after migrations or cutovers.
+

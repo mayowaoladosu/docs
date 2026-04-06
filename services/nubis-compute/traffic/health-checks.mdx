@@ -1,0 +1,22 @@
+---
+title: "Health checks"
+description: "Choose health checks that reflect real application health so traffic stops flowing to bad backends quickly."
+---
+
+## Health checks should match the app, not just the port
+
+A good health check tells the load balancer whether the backend can actually serve the workload, not merely whether the server is powered on.
+
+## Practical guidance
+
+- Use an HTTP endpoint when the application can expose one safely.
+- Use a TCP check only when a deeper application check is not possible.
+- Keep the check fast enough to catch failure but stable enough to avoid flapping.
+- Review timeout and interval settings during traffic tests.
+
+## Common mistakes
+
+- Probing an endpoint that is too shallow to reflect app health
+- Using check intervals that are too aggressive for the workload
+- Forgetting to update the health check after the application path changes
+

@@ -1,0 +1,27 @@
+---
+title: "SDK buckets"
+description: "Work with Nubis Storage buckets from code using S3-compatible SDK calls."
+---
+
+## Common bucket operations in code
+
+Applications and internal tools typically use SDKs to:
+
+- Create buckets where allowed by the workflow
+- Check whether a bucket exists
+- Read bucket metadata or configuration
+- Apply access or lifecycle-related settings through supported APIs
+
+## Example bucket listing
+
+```javascript
+import { ListBucketsCommand } from "@aws-sdk/client-s3";
+
+const response = await client.send(new ListBucketsCommand({}));
+console.log(response.Buckets);
+```
+
+## Good practice
+
+Keep bucket-creation logic out of hot application paths unless your platform workflow truly requires it.
+

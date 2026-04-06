@@ -1,0 +1,23 @@
+---
+title: "Access private buckets"
+description: "Keep Nubis Storage buckets private by default and expose data only through controlled application paths."
+---
+
+## Private by default is the safer default
+
+Most application data should start in a private bucket. Public buckets are useful for asset delivery, but internal uploads, backups, and user-generated content often need tighter control.
+
+## Common private-access patterns
+
+- Scoped access keys for trusted server-side applications
+- Presigned URLs for short-lived client access
+- Bucket policies that grant only the minimum required actions
+- Tight CORS rules only for approved browser origins
+
+## Good access habits
+
+- Use separate credentials per application.
+- Rotate keys when ownership changes.
+- Keep presigned URL expiries short.
+- Avoid mixing public and private data in the same bucket unless there is a strong reason.
+

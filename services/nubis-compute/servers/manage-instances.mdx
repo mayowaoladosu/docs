@@ -1,0 +1,38 @@
+---
+title: "Manage instances"
+description: "Handle day-2 instance operations on Nubis Compute, from health checks to resizing and recovery planning."
+---
+
+## Day-2 operations matter more than the first launch
+
+Once an instance is live, good operations are about consistency: knowing how to reboot safely, resize intentionally, monitor behavior, and recover without improvising under pressure.
+
+## Common instance operations
+
+- Start, stop, reboot, and redeploy when needed
+- Resize compute when traffic or workload shape changes
+- Review CPU, memory, disk, and network behavior
+- Attach or expand disks as data grows
+- Manage backups, snapshots, and recovery readiness
+
+## Operating pattern that scales
+
+<Steps>
+  <Step title="Monitor real workload behavior">
+    Use runtime metrics and application behavior to decide whether the instance is correctly sized.
+  </Step>
+  <Step title="Treat resizing as a planned change">
+    Resize during a maintenance window or low-risk period when the workload is sensitive to interruption.
+  </Step>
+  <Step title="Keep backup and rollback paths current">
+    Make sure your snapshot and restore assumptions are tested before high-risk changes.
+  </Step>
+</Steps>
+
+## Practical checks during routine management
+
+- Has the workload outgrown the original disk plan?
+- Are security rules still aligned with how the app is exposed today?
+- Do old instances still exist after deployments or migrations?
+- Are backups recent and restorable?
+

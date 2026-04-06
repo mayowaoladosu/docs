@@ -1,0 +1,37 @@
+---
+title: "Using the SDK"
+description: "Access Nubis Storage from applications through standard S3-compatible SDK workflows."
+---
+
+## SDK access is usually the most maintainable path
+
+Because Nubis Storage follows S3-compatible patterns, most teams integrate it with the same SDK model they would use for other object-storage providers.
+
+## Typical SDK setup
+
+- Endpoint from your Nubis Storage configuration
+- Access key and secret for the application
+- Region or logical location where required by the SDK
+- Bucket name and object-key conventions defined by your app
+
+## JavaScript example
+
+```javascript
+import { S3Client } from "@aws-sdk/client-s3";
+
+const client = new S3Client({
+  endpoint: process.env.NUBIS_STORAGE_ENDPOINT,
+  region: process.env.NUBIS_STORAGE_REGION,
+  credentials: {
+    accessKeyId: process.env.NUBIS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.NUBIS_SECRET_ACCESS_KEY,
+  },
+  forcePathStyle: true,
+});
+```
+
+## Continue with
+
+- [SDK buckets](/services/nubis-storage/sdk/buckets)
+- [SDK objects](/services/nubis-storage/sdk/objects)
+

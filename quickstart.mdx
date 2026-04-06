@@ -1,6 +1,6 @@
 ---
 title: "Launch your first workload"
-description: "Go from a fresh Nubis workspace to a running workload with a clean project setup."
+description: "Go from a fresh Nubis workspace to a running workload using the new service-led documentation flow."
 ---
 
 ## Start with a clean project
@@ -8,13 +8,13 @@ description: "Go from a fresh Nubis workspace to a running workload with a clean
 The fastest way to succeed on Nubis is to set up the workspace first and the workload second. That gives you cleaner billing, better access control, and fewer surprises later.
 
 ### 1. Create or select an organization
-Use an organization for the team or business unit that will own billing, support, and governance.
+Use an organization for the team or business unit that will own billing, support, and governance. If you have not set that up yet, start with [Get started](/get-started).
 
 ### 2. Create a project
-Resources in Nubis are grouped by project. A common pattern is one project per environment, such as `dev`, `staging`, and `prod`.
+Resources in Nubis are grouped by project. A common pattern is one project per environment, such as `dev`, `staging`, and `prod`. See [Manage projects](/get-started/manage-projects) for the recommended structure.
 
 ### 3. Confirm billing readiness
-Before provisioning, make sure the organization has an active payment method and has cleared any verification steps required for billing.
+Before provisioning, make sure the organization has an active payment method and has cleared any verification steps required for billing. Use [Billing and payments](/get-started/billing-payments) if this is still pending.
 
 ### 4. Choose the right launch path
 Pick the resource that matches the job:
@@ -22,7 +22,7 @@ Pick the resource that matches the job:
 - **Instances** for app servers, workers, cron jobs, and general-purpose compute.
 - **Managed Databases** for stateful data services.
 - **Kubernetes** for container orchestration.
-- **Storage** for volumes or object buckets.
+- **Storage** for disks or object buckets.
 
 ### 5. Configure the workload
 For an instance launch, decide on:
@@ -30,11 +30,11 @@ For an instance launch, decide on:
 - **Region** closest to users or dependent services.
 - **Image or template** that matches the runtime you want.
 - **Instance size** based on CPU, memory, and storage requirements.
-- **Networking** such as VPC placement, firewalls, and floating IP needs.
+- **Networking** such as VPC placement, security controls, and public entry needs.
 - **Protection** such as backups and spend controls.
 
 ### 6. Connect and validate
-Once the workload is active, connect using the Console or SSH and confirm that logs, metrics, and access rules look correct.
+Once the workload is active, connect using the Console or SSH and confirm that logs, metrics, billing visibility, and access rules look correct.
 
 ```bash
 ssh root@your-instance-ip
@@ -42,7 +42,7 @@ ssh root@your-instance-ip
 
 ## Next steps
 
-- [Add DNS and domains](/console/dns)
-- [Configure backups and snapshots](/console/backups)
-- [Set up observability and alerts](/console/metrics)
+- [Launch an instance](/services/nubis-compute/servers/launch-instance)
+- [Work with buckets](/services/nubis-storage/buckets)
+- [Set up billing guardrails](/get-started/billing-payments)
 - [Explore the API and SDKs](/api-reference/introduction)

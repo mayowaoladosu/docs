@@ -1,96 +1,96 @@
 ---
 title: "Welcome to Nubis"
-description: "Cloud infrastructure for African builders."
+description: "Service-led cloud documentation for African builders and operator-led teams."
 ---
 
 <Frame>
   <img src="/images/og-image.png" alt="Nubis cloud platform visual." style={{ borderRadius: '0.75rem' }} />
 </Frame>
 
-## One control plane for modern infrastructure
+## One control plane, organized around the way teams actually work
 
-Nubis gives startups and operator-led teams one place to run instances, databases, Kubernetes, storage, networking, domains, billing, and team access. The documentation follows the same model as the product: onboard once, create projects, launch workloads, then manage cost, security, and operations from the same workspace.
+This adaptation reshapes the Nubis docs into a cleaner service-led structure: get your workspace ready, launch the right product, then operate it confidently with billing, security, and support in view.
 
 <CardGroup cols={2}>
   <Card
-    title="Set up your environment"
+    title="Get started"
     icon="rocket"
     href="/get-started"
   >
-    Create your organization, project, billing profile, and first resources.
+    Create your workspace, invite your team, define projects, and prepare billing for production.
   </Card>
   <Card
-    title="Core services"
+    title="Nubis Compute"
     icon="server"
-    href="/console/instances"
+    href="/services/nubis-compute"
   >
-    Launch instances, databases, Kubernetes, storage, and networking from the Console.
+    Launch instances, attach disks, configure networking, and distribute traffic across workloads.
   </Card>
   <Card
-    title="Operations"
-    icon="activity"
-    href="/console/metrics"
+    title="Nubis Storage"
+    icon="database"
+    href="/services/nubis-storage"
   >
-    Track metrics, logs, incidents, billing, spend limits, and support workflows.
+    Manage buckets, private object access, SDK workflows, and storage cost visibility.
   </Card>
   <Card
-    title="API & automation"
-    icon="code-xml"
-    href="/api-reference/introduction"
+    title="Nubis Databases"
+    icon="cylinder"
+    href="/services/nubis-databases"
   >
-    Use API keys, webhooks, SDKs, and service accounts to automate Nubis.
+    Understand the managed database direction on Nubis and how it fits with the rest of the platform.
   </Card>
 </CardGroup>
 
-## What Nubis covers
+## Explore by job to be done
 
 <CardGroup cols={2}>
   <Card
-    title="Compute"
-    href="/services/instances/overview"
+    title="Launch a first workload"
+    href="/services/nubis-compute/servers/launch-instance"
   >
-    Virtual machines, backups, snapshots, scaling groups, and curated images for repeatable launches.
+    Move from account setup to a running instance with networking, access, and operations in place.
   </Card>
   <Card
-    title="Data & storage"
-    href="/console/storage"
+    title="Move from another platform"
+    href="/get-started/migrate-to-nubis"
   >
-    Managed databases, block volumes, object storage buckets, and access keys.
+    Use a phased migration approach for servers, data, and supporting infrastructure.
   </Card>
   <Card
-    title="Networking"
-    href="/console/networking"
+    title="Work with object storage"
+    href="/services/nubis-storage/buckets"
   >
-    VPC-style networking, subnets, NAT gateways, firewalls, load balancers, floating IPs, DNS, and domains.
+    Create buckets, manage objects, keep data private, and standardize naming and access.
   </Card>
   <Card
-    title="Governance"
-    href="/console/iam"
+    title="Get help quickly"
+    href="/need-help"
   >
-    Organizations, projects, RBAC, API keys, audit logs, service accounts, and support plans.
+    Check FAQs, support guidance, and platform status without digging through unrelated pages.
   </Card>
 </CardGroup>
 
-## Start here
+## Recommended first path
 
 <Steps>
-  <Step title="Create or select an organization">
-    Use the [organization guide](/console/organizations) to define the workspace that owns billing, members, and shared policy.
+  <Step title="Set up the workspace">
+    Start in [Get started](/get-started) to define the organization, team, project model, and billing posture.
   </Step>
-  <Step title="Create a project">
-    Projects are the unit Nubis uses for scoping workloads, networking, and cost visibility. Start with one project per environment or product.
+  <Step title="Choose the service">
+    Go to [Nubis Compute](/services/nubis-compute), [Nubis Storage](/services/nubis-storage), or [Nubis Databases](/services/nubis-databases) depending on the workload.
   </Step>
-  <Step title="Add billing and verification">
-    Set a payment method, confirm any required billing checks, and decide on spend controls before you launch production workloads.
+  <Step title="Follow the focused task pages">
+    Use the smaller, task-oriented guides under each service instead of broad catch-all pages.
   </Step>
-  <Step title="Launch resources">
-    Provision your first [instance](/services/instances/create), database, Kubernetes cluster, bucket, or DNS zone from the Console.
+  <Step title="Use support and status intentionally">
+    Check [Need help?](/need-help) and [status.usenubis.com](https://status.usenubis.com) when you need faster troubleshooting.
   </Step>
 </Steps>
 
 ## Continue exploring
 
-- [Get started](/get-started) for the onboarding flow.
-- [System architecture](/essentials/architecture) for the platform design.
-- [Billing overview](/billing/overview) for payment methods, invoices, credits, and spend controls.
-- [API & automation overview](/api-reference/introduction) for programmatic access.
+- [Get started](/get-started) for onboarding and migration planning.
+- [Nubis Compute](/services/nubis-compute) for instance, disk, network, and traffic guides.
+- [Nubis Storage](/services/nubis-storage) for buckets, objects, SDK, and API workflows.
+- [Need help?](/need-help) for FAQs, support guidance, and escalation paths.

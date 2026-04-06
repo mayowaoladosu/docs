@@ -1,0 +1,38 @@
+---
+title: "Disks"
+description: "Plan, attach, expand, and operate block storage for Nubis Compute instances."
+---
+
+## Separate server compute from persistent data
+
+If a workload stores meaningful data, it should rarely depend only on the instance root disk. Attached disks keep storage growth and recovery planning more deliberate.
+
+## When to use attached disks
+
+- Application data should live outside the OS disk
+- A database or queue needs persistent storage
+- Storage growth is likely to outpace CPU or memory growth
+- You want cleaner recovery and migration patterns
+
+## Disk workflow
+
+<Steps>
+  <Step title="Create the disk in the same region">
+    Keep the disk close to the instance it will serve.
+  </Step>
+  <Step title="Attach and format it correctly">
+    Mount the disk using the filesystem your application expects.
+  </Step>
+  <Step title="Persist the mount configuration">
+    Ensure the application still sees the disk after reboot or recovery.
+  </Step>
+  <Step title="Resize before you are out of space">
+    Grow storage intentionally and verify the filesystem expansion completes.
+  </Step>
+</Steps>
+
+## Continue with
+
+- [Volumes](/console/volumes)
+- [Manage instances](/services/nubis-compute/servers/manage-instances)
+

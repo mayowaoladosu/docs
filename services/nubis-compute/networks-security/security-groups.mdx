@@ -1,0 +1,34 @@
+---
+title: "Security groups"
+description: "Control traffic to Nubis Compute workloads with reusable network rules and a least-exposure mindset."
+---
+
+## Security groups on Nubis
+
+If your Nubis Console currently exposes these controls as firewalls, treat this guide as the same operating model: define reusable traffic policy, attach it intentionally, and keep public access narrow.
+
+## What to allow
+
+- Public ingress only for the ports that truly need it
+- Private east-west traffic only where services must communicate
+- Administrative access from trusted source ranges
+- Outbound rules that reflect the workload's real dependencies
+
+## Operating pattern
+
+<Steps>
+  <Step title="Describe the traffic intent first">
+    Decide what must be reachable from the internet, from internal services, and from operators.
+  </Step>
+  <Step title="Create a narrow rule set">
+    Start small and explicit, then expand only when there is a validated need.
+  </Step>
+  <Step title="Review after each topology change">
+    Revisit the rule set whenever you add a new subnet, instance role, or load balancer path.
+  </Step>
+</Steps>
+
+## Related guide
+
+- [Cloud firewalls](/console/firewalls)
+

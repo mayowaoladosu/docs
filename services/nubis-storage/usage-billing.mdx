@@ -1,0 +1,25 @@
+---
+title: "Usage and billing"
+description: "Understand how Nubis Storage usage grows so buckets and delivery costs do not surprise the team later."
+---
+
+## Storage cost grows in a few predictable ways
+
+The biggest Nubis Storage cost drivers are usually stored data volume, request patterns, delivery behavior, and retention settings that nobody reviewed after launch.
+
+## Common storage cost drivers
+
+- Total data stored
+- Request volume for reads and writes
+- Public delivery and egress-heavy usage patterns
+- Versioned objects and retained old copies
+- Incomplete multipart uploads or stale backup buckets
+
+## Good cost hygiene
+
+1. Keep old test buckets from lingering.
+2. Review lifecycle policies early.
+3. Separate archival and hot-access data.
+4. Track large public assets and cache behavior.
+5. Pair bucket reviews with [Billing workspace](/console/billing).
+

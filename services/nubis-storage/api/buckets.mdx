@@ -1,0 +1,18 @@
+---
+title: "Buckets API"
+description: "The main bucket-level operations to think about when automating Nubis Storage over the API."
+---
+
+## Typical bucket-level API tasks
+
+- Create a bucket
+- Read bucket details
+- List existing buckets
+- Adjust access or configuration where supported
+
+## Good API habits
+
+- Keep bucket automation idempotent where possible.
+- Make ownership and environment obvious in the bucket name.
+- Separate bootstrap automation from request-time application code.
+

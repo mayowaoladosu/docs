@@ -17,167 +17,137 @@
             "group": "Overview",
             "pages": [
               "index",
-              "get-started",
-              "quickstart",
-              "essentials/architecture"
+              "quickstart"
             ]
           }
         ]
       },
       {
-        "tab": "Compute",
+        "tab": "Get started",
         "groups": [
           {
-            "group": "Instances & Images",
+            "group": "Workspace setup",
             "pages": [
-              "console/instances",
-              "services/instances/overview",
-              "services/instances/create",
-              "console/images",
-              "console/marketplace",
-              "console/backups"
+              "get-started/index",
+              "get-started/manage-teams",
+              "get-started/roles-and-permissions",
+              "get-started/manage-projects",
+              "get-started/billing-payments"
             ]
           },
           {
-            "group": "Elasticity & Automation",
+            "group": "Adoption guides",
             "pages": [
-              "console/scaling",
-              "services/runners/overview",
-              "services/runners/setup"
+              "get-started/migrate-to-nubis",
+              "get-started/poc-guide"
             ]
           }
         ]
       },
       {
-        "tab": "Networking",
+        "tab": "Nubis Compute",
         "groups": [
           {
-            "group": "Core Networking",
+            "group": "Overview",
             "pages": [
-              "console/networking",
-              "console/vpc",
-              "networking/load-balancers/overview",
-              "networking/load-balancers/create",
-              "console/firewalls"
+              "services/nubis-compute/index",
+              "services/nubis-compute/migrate-servers",
+              "services/nubis-compute/usage-billing"
             ]
           },
           {
-            "group": "Edge & Routing",
+            "group": "Servers",
             "pages": [
-              "console/nat-gateways",
-              "console/floating-ips",
-              "console/dns"
+              "services/nubis-compute/servers/launch-instance",
+              "services/nubis-compute/servers/manage-instances",
+              "services/nubis-compute/servers/cloud-init-scripts",
+              "services/nubis-compute/servers/disks"
+            ]
+          },
+          {
+            "group": "Network & security",
+            "pages": [
+              "services/nubis-compute/networks-security/vpcs",
+              "services/nubis-compute/networks-security/subnets",
+              "services/nubis-compute/networks-security/security-groups",
+              "services/nubis-compute/networks-security/key-pairs"
+            ]
+          },
+          {
+            "group": "Traffic",
+            "pages": [
+              "services/nubis-compute/traffic/load-balancers",
+              "services/nubis-compute/traffic/server-groups",
+              "services/nubis-compute/traffic/health-checks",
+              "services/nubis-compute/traffic/listeners"
             ]
           }
         ]
       },
       {
-        "tab": "Data & Storage",
+        "tab": "Nubis Storage",
         "groups": [
           {
-            "group": "Managed Data",
+            "group": "Overview",
             "pages": [
-              "console/databases",
-              "console/kubernetes"
+              "services/nubis-storage/index",
+              "services/nubis-storage/migrate-objects",
+              "services/nubis-storage/usage-billing"
             ]
           },
           {
-            "group": "Storage",
+            "group": "Buckets",
             "pages": [
-              "console/storage",
-              "console/volumes",
-              "console/spaces"
+              "services/nubis-storage/buckets/index",
+              "services/nubis-storage/buckets/access-private-buckets",
+              "services/nubis-storage/buckets/naming-guidelines"
+            ]
+          },
+          {
+            "group": "Objects",
+            "pages": [
+              "services/nubis-storage/objects"
+            ]
+          },
+          {
+            "group": "SDK",
+            "pages": [
+              "services/nubis-storage/sdk/index",
+              "services/nubis-storage/sdk/buckets",
+              "services/nubis-storage/sdk/objects"
+            ]
+          },
+          {
+            "group": "API",
+            "pages": [
+              "services/nubis-storage/api-overview",
+              "services/nubis-storage/api/buckets",
+              "services/nubis-storage/api/objects"
             ]
           }
         ]
       },
       {
-        "tab": "Operations",
+        "tab": "Nubis Databases",
         "groups": [
           {
-            "group": "Observability",
+            "group": "Overview",
             "pages": [
-              "console/metrics",
-              "console/logs",
-              "console/incidents",
-              "console/xray",
-              "console/advisor"
+              "services/nubis-databases/index"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Need help?",
+        "groups": [
           {
-            "group": "Billing & Support",
+            "group": "Support",
             "pages": [
-              "billing/overview",
-              "console/billing",
-              "billing/paystack",
-              "billing/stripe",
+              "need-help/index",
+              "need-help/faqs",
+              "need-help/contact-support",
               "console/support"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Governance",
-        "groups": [
-          {
-            "group": "Workspace",
-            "pages": [
-              "console/organizations",
-              "console/projects"
-            ]
-          },
-          {
-            "group": "Identity & Security",
-            "pages": [
-              "console/iam",
-              "administration/rbac/overview",
-              "authentication/getting-started",
-              "authentication/api-keys",
-              "console/security"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Developer Hub",
-        "groups": [
-          {
-            "group": "API & Automation",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication",
-              "api-reference/instances",
-              "api-reference/networking",
-              "api-reference/billing",
-              "developers/webhooks"
-            ]
-          },
-          {
-            "group": "SDKs & Tools",
-            "pages": [
-              "developers/sdk-js",
-              "developers/sdk-rust",
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Platform",
-        "groups": [
-          {
-            "group": "Architecture",
-            "pages": [
-              "backend/architecture",
-              "backend/services"
-            ]
-          },
-          {
-            "group": "Deployment",
-            "pages": [
-              "backend/deployment"
             ]
           }
         ]
@@ -194,6 +164,11 @@
           "anchor": "Status",
           "href": "https://status.usenubis.com",
           "icon": "circle-activity"
+        },
+        {
+          "anchor": "Support",
+          "href": "https://usenubis.com/support",
+          "icon": "life-buoy"
         },
         {
           "anchor": "Console",

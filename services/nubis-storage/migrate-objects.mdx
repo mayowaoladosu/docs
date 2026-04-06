@@ -1,0 +1,37 @@
+---
+title: "Migrate objects"
+description: "Move data into Nubis Storage carefully so applications, permissions, and naming stay stable."
+---
+
+## Object migration is mostly about consistency
+
+Moving object data successfully is not just copying files. It also means preserving the right names, metadata, privacy model, retention behavior, and application references.
+
+## Recommended migration flow
+
+<Steps>
+  <Step title="Create the target bucket structure">
+    Decide which buckets should exist on Nubis and how you want naming, regions, and access models to work after migration.
+  </Step>
+  <Step title="Dry-run the transfer tool">
+    Test your sync path on a subset of data first so naming, metadata, and access expectations are verified.
+  </Step>
+  <Step title="Move objects in phases">
+    Start with non-critical data or a replica bucket before you move traffic-sensitive production objects.
+  </Step>
+  <Step title="Validate reads and writes">
+    Confirm applications can upload, fetch, and authorize access exactly as expected.
+  </Step>
+  <Step title="Cut over and monitor">
+    Switch application configuration only when the target bucket is complete and tested.
+  </Step>
+</Steps>
+
+## Things teams often miss
+
+- Bucket policies and key scopes
+- Object metadata such as cache headers and content types
+- Presigned URL behavior
+- Lifecycle and retention rules
+- Application-side endpoint configuration
+

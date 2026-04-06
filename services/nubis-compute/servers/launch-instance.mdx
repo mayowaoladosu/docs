@@ -1,0 +1,45 @@
+---
+title: "Launch instance"
+description: "Provision a server on Nubis Compute with the right image, size, access model, and network posture."
+---
+
+## Start with workload intent, not with the biggest size
+
+Launching well on Nubis Compute means matching the server to the workload: where it should run, how it should be accessed, what data it needs, and how it should be protected on day one.
+
+## Launch checklist
+
+<Steps>
+  <Step title="Select the project and region">
+    Put the instance in the project that owns the workload and choose the region closest to users or dependent services.
+  </Step>
+  <Step title="Choose the image and size">
+    Pick the operating system and instance size that match the runtime and expected load, then plan to revisit sizing after real traffic arrives.
+  </Step>
+  <Step title="Define access">
+    Attach the right SSH key pair, decide whether the instance needs a public entry point, and keep private workloads private by default.
+  </Step>
+  <Step title="Plan storage and bootstrap">
+    Decide whether the root disk is enough or whether the workload needs dedicated attached disks and a cloud-init bootstrap path.
+  </Step>
+  <Step title="Review security before launch">
+    Confirm VPC placement, subnet choice, traffic rules, and backup expectations before the server is created.
+  </Step>
+</Steps>
+
+## Decide these inputs before clicking create
+
+- Instance name and ownership
+- Region and environment
+- Image or template
+- CPU, memory, and disk needs
+- SSH access model
+- Private networking and ingress exposure
+- Backup and recovery posture
+
+## Related guides
+
+- [Manage instances](/services/nubis-compute/servers/manage-instances)
+- [Cloud-init scripts](/services/nubis-compute/servers/cloud-init-scripts)
+- [Key pairs](/services/nubis-compute/networks-security/key-pairs)
+

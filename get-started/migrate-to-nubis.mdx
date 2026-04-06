@@ -1,0 +1,43 @@
+---
+title: "Migrate to Nubis"
+description: "Plan and execute a low-drama migration from another cloud or on-prem environment into Nubis."
+---
+
+## Migration succeeds when scope is clear
+
+The safest path into Nubis is usually phased. Start by understanding the workloads, dependencies, data, networking expectations, and operational owners involved before moving anything.
+
+## A practical migration sequence
+
+<Steps>
+  <Step title="Inventory the current environment">
+    List servers, databases, object storage, networking rules, domains, CI/CD paths, and dependency relationships.
+  </Step>
+  <Step title="Design the target landing zone">
+    Decide which Nubis organization, projects, VPCs, storage services, and access patterns the workload will use.
+  </Step>
+  <Step title="Migrate the least risky workload first">
+    Begin with a non-critical service or a production replica so the team can validate tooling and runbooks safely.
+  </Step>
+  <Step title="Run validation and rollback planning">
+    Test connectivity, performance, monitoring, and recovery steps before wider cutover.
+  </Step>
+  <Step title="Cut over deliberately">
+    Move traffic only after the team agrees that the workload, data, and support model are ready.
+  </Step>
+</Steps>
+
+## What to validate during migration
+
+- Instance sizing and performance expectations
+- Disk layout and backup coverage
+- Private networking, firewall, and load-balancer behavior
+- Object storage endpoints, access keys, and application configuration
+- Billing ownership and spend visibility after cutover
+
+## Migration starting points
+
+- [Migrate servers](/services/nubis-compute/migrate-servers)
+- [Migrate objects](/services/nubis-storage/migrate-objects)
+- [POC guide](/get-started/poc-guide)
+

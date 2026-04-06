@@ -1,0 +1,24 @@
+---
+title: "Objects"
+description: "Manage the files stored in Nubis Storage buckets with clear rules for uploads, metadata, delivery, and retention."
+---
+
+## Objects are the actual data layer
+
+Objects are the files and blobs stored inside a bucket. Once a bucket is well designed, most day-to-day storage operations happen at the object level.
+
+## Object-management concerns
+
+- Upload and overwrite behavior
+- Metadata such as content type and cache headers
+- Versioning and rollback expectations
+- Lifecycle and retention controls
+- Public versus private delivery paths
+
+## Object-management habits
+
+1. Write predictable keys and prefixes.
+2. Set metadata intentionally during upload.
+3. Use versioning when rollback matters.
+4. Clean up objects that no longer serve a purpose.
+

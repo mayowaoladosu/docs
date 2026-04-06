@@ -1,0 +1,29 @@
+---
+title: "VPCs"
+description: "Use VPCs to create clearer private network boundaries for Nubis Compute workloads."
+---
+
+## Design the private network before the public entry point
+
+VPCs give you the isolation layer that keeps internal traffic and environment separation easier to reason about as your Nubis estate grows.
+
+## What a VPC should answer
+
+- Which workloads should talk privately to each other
+- Which environments need isolation
+- Which services require public exposure and which do not
+- How future subnets and traffic controls will be organized
+
+## Recommended VPC workflow
+
+1. Start with the project and environment boundary.
+2. Define the CIDR range and subnet layout you can live with over time.
+3. Place application, data, and edge-facing resources intentionally.
+4. Add security rules only after the network shape is clear.
+
+## Related guides
+
+- [Subnets](/services/nubis-compute/networks-security/subnets)
+- [Security groups](/services/nubis-compute/networks-security/security-groups)
+- [VPC overview](/console/vpc)
+

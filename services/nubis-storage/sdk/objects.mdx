@@ -1,0 +1,33 @@
+---
+title: "SDK objects"
+description: "Upload and retrieve Nubis Storage objects from application code with clearer object-handling patterns."
+---
+
+## Common object operations in code
+
+Applications generally use SDKs to:
+
+- Upload new objects
+- Download or stream objects
+- Delete obsolete data
+- Generate presigned URLs for temporary access
+
+## Example upload
+
+```javascript
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+
+await client.send(
+  new PutObjectCommand({
+    Bucket: "your-bucket",
+    Key: "uploads/example.txt",
+    Body: "hello from Nubis Storage",
+    ContentType: "text/plain",
+  }),
+);
+```
+
+## Good practice
+
+Treat object keys as part of your application contract so you do not create inconsistent prefixes over time.
+

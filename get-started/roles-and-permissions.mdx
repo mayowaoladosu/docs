@@ -1,0 +1,60 @@
+---
+title: "Roles and permissions"
+description: "Apply RBAC in Nubis with clear role boundaries for people, service accounts, and automation."
+---
+
+## Use roles to manage access, not exceptions
+
+Nubis uses role-based access control so teams can manage access consistently across compute, networking, storage, billing, and identity workflows. The goal is to make access predictable as the platform grows.
+
+## Core RBAC concepts
+
+### Roles
+
+Roles bundle permissions into a reusable access model for a person or service account.
+
+### Permissions
+
+Permissions are the individual actions a role can perform across billing, IAM, projects, compute, storage, networking, and support workflows.
+
+### Identities
+
+Identities include both people and automation actors, such as CI/CD service accounts.
+
+## Default role guidance
+
+<CardGroup cols={2}>
+  <Card title="Owner">
+    Full administrative control, including billing, IAM, and organization-wide operations.
+  </Card>
+  <Card title="Admin">
+    Broad operational control for infrastructure and team management without needing owner-only powers.
+  </Card>
+  <Card title="Member">
+    Day-to-day access for contributors who should work within defined operational boundaries.
+  </Card>
+  <Card title="Service account">
+    Automation identity for CI/CD, provisioning, and system integrations without relying on personal credentials.
+  </Card>
+</CardGroup>
+
+## Recommended access model
+
+1. Keep billing and IAM rights narrow.
+2. Use members or custom roles for routine engineering work.
+3. Create service accounts for automation instead of sharing personal keys.
+4. Review elevated roles as part of your regular operating cadence.
+
+## Good RBAC habits
+
+- Prefer least privilege over blanket access.
+- Avoid using owners for normal day-to-day work.
+- Keep production access more restrictive than development access.
+- Remove stale identities quickly when people or systems no longer need them.
+
+## Continue with
+
+- [Manage teams](/get-started/manage-teams)
+- [Manage projects](/get-started/manage-projects)
+- [Detailed RBAC overview](/administration/rbac/overview)
+

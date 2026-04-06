@@ -1,0 +1,20 @@
+---
+title: "Server groups"
+description: "Organize backend instances behind a Nubis load balancer so traffic routing stays predictable."
+---
+
+## Group backends by service role
+
+Server groups are the operational idea behind a clean load-balancer backend: the instances in the group should do the same job, expose the same ports, and be safe to route traffic to interchangeably.
+
+## Good backend-group habits
+
+- Keep one clear purpose per backend group.
+- Avoid mixing unrelated applications in the same traffic pool.
+- Make sure each server in the group is bootstrapped and monitored the same way.
+- Pair backend membership changes with deployment and rollback steps.
+
+## When your Console uses a different term
+
+If Nubis exposes this concept as target pools, backend pools, or attached instance sets, the operating guidance stays the same.
+

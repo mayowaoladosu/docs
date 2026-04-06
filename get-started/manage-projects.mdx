@@ -1,0 +1,59 @@
+---
+title: "Manage projects"
+description: "Structure Nubis projects so environments, teams, and cost ownership stay clear from the beginning."
+---
+
+## Projects are the working boundary
+
+Projects are where workloads live. They help you separate infrastructure by environment, product, team, or customer while keeping billing visibility and operational ownership easier to understand.
+
+## Common project patterns
+
+### By environment
+
+Use separate projects for `dev`, `staging`, and `prod`.
+
+### By product
+
+Use one project per product when different teams own separate delivery and operating cycles.
+
+### By customer or business unit
+
+Use separate projects when isolation, reporting clarity, or delegated ownership matters.
+
+## Recommended project workflow
+
+<Steps>
+  <Step title="Choose a naming convention">
+    Pick project names that make environment and ownership obvious, such as `payments-prod` or `core-platform-dev`.
+  </Step>
+  <Step title="Attach the right team">
+    Grant access only to the operators and developers who need to work in that project.
+  </Step>
+  <Step title="Keep related resources together">
+    Place compute, storage, networking, and supporting resources for the same workload in the same project where possible.
+  </Step>
+  <Step title="Review cost and risk boundaries">
+    Use projects to keep spend ownership and blast radius manageable.
+  </Step>
+</Steps>
+
+## What belongs in the same project
+
+- Application instances and their attached disks
+- Supporting VPCs, firewall policies, and load balancers
+- Storage resources primarily used by that workload
+- Environment-specific monitoring and operational resources
+
+## What usually should not
+
+- Unrelated products with different owners
+- Development and production workloads that need different access models
+- Temporary experiments that should not affect shared visibility or cost reporting
+
+## Related guides
+
+- [Project management](/console/projects)
+- [Billing and payments](/get-started/billing-payments)
+- [POC guide](/get-started/poc-guide)
+

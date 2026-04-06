@@ -1,0 +1,32 @@
+---
+title: "Usage and billing"
+description: "Understand the main cost drivers behind Nubis Compute so instance growth stays predictable."
+---
+
+## Compute spend is easiest to manage when you separate the cost drivers
+
+The total cost of running on Nubis Compute is rarely just the server itself. Instance size, uptime, attached disks, backups, traffic components, and supporting network services all shape the final bill.
+
+## Typical compute cost components
+
+- Instance runtime and selected size
+- Attached block storage and growth over time
+- Backup and snapshot retention
+- Load balancers and their traffic patterns
+- Public networking or related traffic services where applicable
+
+## Good cost-management habits
+
+1. Use projects to keep ownership obvious.
+2. Right-size instances after the first real traffic patterns show up.
+3. Watch disk growth separately from CPU and memory growth.
+4. Review idle or forgotten resources on a regular schedule.
+5. Pair compute reviews with [Billing workspace](/console/billing) and [Billing overview](/billing/overview).
+
+## Cost review questions
+
+- Are instances consistently over-provisioned?
+- Are backup or snapshot retention windows longer than needed?
+- Are old disks still attached to retired workloads?
+- Are multiple environments sharing traffic infrastructure that should be isolated?
+

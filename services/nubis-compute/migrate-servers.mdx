@@ -1,0 +1,43 @@
+---
+title: "Migrate servers"
+description: "Move virtual machines and server-based workloads into Nubis Compute with a phased, low-risk approach."
+---
+
+## Treat server migration as a sequence, not an event
+
+Most migrations to Nubis Compute go more smoothly when they are broken into discovery, landing-zone design, test migration, validation, and cutover.
+
+## Server migration workflow
+
+<Steps>
+  <Step title="Inventory the source servers">
+    Capture CPU, memory, disk layout, OS version, open ports, scheduled jobs, attached services, and dependency relationships.
+  </Step>
+  <Step title="Map the target design">
+    Decide on the Nubis project, instance sizing, disks, VPC placement, security rules, and public access model.
+  </Step>
+  <Step title="Prepare a pilot server">
+    Move one representative workload first so your team can validate tooling, cloud-init, backup, and support processes.
+  </Step>
+  <Step title="Sync data and configuration">
+    Reproduce application config, secrets, SSH access, and any attached data paths before traffic moves.
+  </Step>
+  <Step title="Cut over with rollback in mind">
+    Keep DNS, load-balancer, and rollback steps documented before the final switch.
+  </Step>
+</Steps>
+
+## What to validate before cutover
+
+- The instance boots with the expected image and bootstrap logic
+- Attached disks are mounted and application paths are correct
+- Private and public traffic rules match the intended design
+- Monitoring and backup coverage are active
+- Billing ownership is correct for the project and organization
+
+## Continue with
+
+- [Launch instance](/services/nubis-compute/servers/launch-instance)
+- [Cloud-init scripts](/services/nubis-compute/servers/cloud-init-scripts)
+- [Load balancers](/services/nubis-compute/traffic/load-balancers)
+

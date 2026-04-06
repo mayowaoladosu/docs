@@ -1,0 +1,23 @@
+---
+title: "Key pairs"
+description: "Use SSH key pairs to keep Nubis Compute instance access controlled and repeatable."
+---
+
+## Prefer managed key-based access over shared passwords
+
+SSH key pairs are the cleanest way to control access to Linux instances on Nubis Compute. They make launches repeatable and reduce the temptation to share broad credentials.
+
+## Recommended key-pair practice
+
+- Keep separate keys for people and automation
+- Rotate keys when ownership changes
+- Remove stale keys from instance launch templates
+- Avoid reusing one key pair everywhere
+
+## Before launch
+
+1. Decide who needs shell access.
+2. Attach only the relevant public keys.
+3. Keep emergency access procedures documented.
+4. Pair key review with [Roles and permissions](/get-started/roles-and-permissions).
+

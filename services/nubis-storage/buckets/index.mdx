@@ -1,0 +1,39 @@
+---
+title: "Buckets"
+description: "Create and structure buckets on Nubis Storage with a naming, access, and lifecycle model that scales."
+---
+
+## Buckets are the top-level boundary
+
+A bucket is the main container for objects in Nubis Storage. Good bucket design makes security, naming, retention, and application integration easier over time.
+
+## Before you create a bucket
+
+- Decide which project or workload owns it
+- Choose whether it should be private or public by default
+- Pick a name that will still make sense months later
+- Plan lifecycle and retention behavior early
+
+## Recommended bucket workflow
+
+<Steps>
+  <Step title="Choose region and ownership">
+    Keep the bucket close to the applications and users who depend on it.
+  </Step>
+  <Step title="Start private unless public delivery is required">
+    Public access is easy to add later; accidental exposure is harder to unwind.
+  </Step>
+  <Step title="Use scoped credentials">
+    Give applications narrow keys or service accounts instead of broad shared secrets.
+  </Step>
+  <Step title="Apply lifecycle decisions early">
+    Decide how long objects, versions, and stale uploads should remain.
+  </Step>
+</Steps>
+
+## Related guides
+
+- [Access private buckets](/services/nubis-storage/buckets/access-private-buckets)
+- [Naming guidelines](/services/nubis-storage/buckets/naming-guidelines)
+- [Objects](/services/nubis-storage/objects)
+

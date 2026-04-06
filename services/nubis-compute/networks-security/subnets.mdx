@@ -1,0 +1,27 @@
+---
+title: "Subnets"
+description: "Use subnets to separate workload tiers and reduce accidental exposure inside a Nubis VPC."
+---
+
+## Subnets turn network intent into layout
+
+Subnets help you divide a VPC into workload zones such as public entry, application runtime, and data services. This makes access control and operations easier to manage later.
+
+## Common subnet patterns
+
+- Public-facing services in one subnet
+- Internal application services in another
+- Data services kept in restricted private ranges
+
+## Good subnet habits
+
+- Keep public and private workloads separated.
+- Leave room for future growth in your address plan.
+- Align subnets with how your firewalls and load balancers will behave.
+- Avoid rebuilding the subnet plan every time a new app arrives.
+
+## Continue with
+
+- [VPCs](/services/nubis-compute/networks-security/vpcs)
+- [Load balancers](/services/nubis-compute/traffic/load-balancers)
+

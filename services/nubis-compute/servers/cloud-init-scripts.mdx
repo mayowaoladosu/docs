@@ -1,0 +1,37 @@
+---
+title: "Cloud-init scripts"
+description: "Use cloud-init to make Nubis Compute launches more repeatable and less manual."
+---
+
+## Bootstrap once, reuse often
+
+Cloud-init is the cleanest way to turn a fresh instance into a predictable workload host. Instead of logging in and hand-configuring packages or users, define that logic at launch time.
+
+## Good uses for cloud-init
+
+- Installing packages and runtime dependencies
+- Creating system users or SSH configuration
+- Writing configuration files and environment values
+- Pulling application code or artifacts during boot
+- Enabling agents for monitoring or security
+
+## Example pattern
+
+```yaml
+#cloud-config
+package_update: true
+packages:
+  - nginx
+  - curl
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
+```
+
+## Best practices
+
+- Keep scripts idempotent where possible.
+- Avoid burying long-lived secrets directly in user data.
+- Test bootstrap changes on non-production instances first.
+- Pair cloud-init with [Key pairs](/services/nubis-compute/networks-security/key-pairs) and [Disks](/services/nubis-compute/servers/disks) when workloads need both bootstrapping and attached storage.
+

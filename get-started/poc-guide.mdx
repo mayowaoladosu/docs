@@ -1,0 +1,48 @@
+---
+title: "POC guide"
+description: "Run a proof of concept on Nubis with a clear scope, measurable success criteria, and a realistic next step."
+---
+
+## Keep the proof of concept focused
+
+A strong POC should answer a small number of important questions clearly. It should not try to reproduce every edge case of your full production estate in the first pass.
+
+## Good POC goals
+
+- Prove that the target workload runs correctly on Nubis
+- Measure performance, latency, and operator experience
+- Validate networking, storage, and access-control assumptions
+- Estimate cost and operational fit for a broader rollout
+
+## Suggested POC structure
+
+<Steps>
+  <Step title="Pick one representative workload">
+    Choose a service that is meaningful enough to test the platform but small enough to migrate without heavy risk.
+  </Step>
+  <Step title="Define success criteria">
+    Write down the exact outcomes that would make the POC a success, such as deployment time, latency, availability, or cost range.
+  </Step>
+  <Step title="Build in a dedicated project">
+    Keep POC resources separate so the test stays easy to track, review, and clean up.
+  </Step>
+  <Step title="Document findings as you go">
+    Record what worked, what failed, and what needs more validation before production.
+  </Step>
+</Steps>
+
+## Example success checklist
+
+- The workload launches cleanly on Nubis Compute
+- Storage and backup behavior match expectations
+- Network access is secure and easy to reason about
+- Team access is correct for operators and developers
+- Estimated monthly spend is acceptable for the intended scale
+
+## Next steps after a successful POC
+
+- Expand the workload scope
+- Plan a migration wave
+- Establish production guardrails
+- Involve support and finance stakeholders before cutover
+

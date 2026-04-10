@@ -1,6 +1,6 @@
-# Nubis Launch Phase 1
+# Nubis Launch Phase 1-2
 
-`Nubis Launch` is the first control-plane slice for application hosting on top of Nubis infrastructure. Phase 1 focuses on the deploy loop for `web`, `worker`, and `cron` services with explicit lifecycle states, operator-visible events, and a GitHub-first source configuration flow.
+`Nubis Launch` is the first control-plane slice for application hosting on top of Nubis infrastructure. Phase 1 focuses on the deploy loop for `web`, `worker`, and `cron` services with explicit lifecycle states, operator-visible events, and control-plane persistence. Phase 2 adds the GitHub-first connection flow, synced repository selection, repo-scoped webhook installation, and push-triggered deployment creation.
 
 ## Scope
 
@@ -33,10 +33,14 @@
   Input validation, private-beta gating, env var encryption, and Launch orchestration entry points
 - `services/api-gateway/src/launch/adapters.rs`
   Build adapter and runtime adapter abstractions plus the Phase 1 Dockerfile/Kubernetes implementations
+- `services/api-gateway/src/launch/github.rs`
+  GitHub OAuth completion, encrypted connection storage, repository sync, webhook installation, and push-triggered deployment orchestration
 - `services/api-gateway/src/workers/launch_deployments.rs`
   Background deployment worker that advances queued deployments through the state machine
 - `services/api-gateway/src/handlers/launch.rs`
   Public Launch API surface
+- `services/api-gateway/src/handlers/launch_github.rs`
+  GitHub connection endpoints, OAuth callback handling, and Launch webhook ingress
 
 ## Frontend Layout
 
@@ -45,7 +49,7 @@
 - `new-frontend/src/components/launch/*`
   Launch status, timeline, access gate, and log UI building blocks
 - `new-frontend/src/pages/launch/*`
-  Project list, project detail, service detail, and deployment detail pages
+  Project list, project detail, service detail, deployment detail, and GitHub callback pages
 
 ## API Surface
 
@@ -57,6 +61,10 @@ All Launch routes are scoped under an organization:
 - `GET /api/v1/orgs/:org_id/launch/projects/:project_id`
 - `GET /api/v1/orgs/:org_id/launch/projects/:project_id/services`
 - `POST /api/v1/orgs/:org_id/launch/projects/:project_id/services`
+- `GET /api/v1/orgs/:org_id/launch/github/connection`
+- `POST /api/v1/orgs/:org_id/launch/github/connect`
+- `GET /api/v1/orgs/:org_id/launch/github/repositories`
+- `POST /api/v1/orgs/:org_id/launch/github/repositories/sync`
 - `GET /api/v1/orgs/:org_id/launch/services/:service_id`
 - `GET /api/v1/orgs/:org_id/launch/services/:service_id/deployments`
 - `POST /api/v1/orgs/:org_id/launch/services/:service_id/deployments`
@@ -65,11 +73,31 @@ All Launch routes are scoped under an organization:
 - `GET /api/v1/orgs/:org_id/launch/deployments/:deployment_id/events`
 - `GET /api/v1/orgs/:org_id/launch/deployments/:deployment_id/logs`
 
+Public GitHub ingress routes:
+
+- `GET /api/v1/launch/github/callback`
+- `POST /api/v1/webhooks/github/launch/:delivery_key`
+
 ## Local Setup
 
 1. Start the API gateway with the usual Nubis environment.
-2. Run migrations so `425_nubis_launch_phase1.sql` is applied.
-3. Grant Launch access to a development org:
+2. Set the Launch GitHub environment variables:
+
+```bash
+GITHUB_CLIENT_ID=...
+GITHUB_CLIENT_SECRET=...
+API_URL=http://localhost:8080
+FRONTEND_URL=http://localhost:5173
+```
+
+3. Run migrations so both Launch migrations are applied:
+
+```text
+425_nubis_launch_phase1.sql
+426_nubis_launch_phase2_github.sql
+```
+
+4. Grant Launch access to a development org:
 
 ```sql
 \i scripts/seed_launch_beta_access.sql
@@ -77,10 +105,18 @@ All Launch routes are scoped under an organization:
 
 Update the placeholder org UUID in that script before running it.
 
-4. Start the frontend and open `/launch`.
+5. In the GitHub OAuth app settings, set the callback URL to:
+
+```text
+http://localhost:8080/api/v1/launch/github/callback
+```
+
+6. Start the frontend and open `/launch`.
 
 ## Notes
 
 - Environment variable values are encrypted before storage using a key derived from the configured server secret plus the organization ID.
-- Phase 1 models GitHub as the primary source mode through repository metadata fields. Full OAuth installation and webhook automation are outside this phase boundary.
+- GitHub is now the primary Launch source path. Users connect GitHub first, sync repositories into the organization cache, and Launch installs a repository-scoped push webhook when a GitHub-backed service is created.
+- Repository URL entry remains available as the manual fallback path for advanced or disconnected workflows.
+- Push webhooks create Launch deployments only for services whose tracked branch matches the pushed ref, and delivery handling is idempotent per service.
 - The runtime target remains Kubernetes, and build output is normalized to OCI image references recorded on the deployment and build records.

@@ -32,7 +32,7 @@
 - `services/api-gateway/src/launch/service.rs`
   Input validation, private-beta gating, env var encryption, and Launch orchestration entry points
 - `services/api-gateway/src/launch/adapters.rs`
-  Build adapter and runtime adapter abstractions plus the Phase 1 Dockerfile/Kubernetes implementations
+  Build adapter and runtime adapter abstractions plus the Launch Dockerfile-or-Railpack build path and Kubernetes runtime implementation
 - `services/api-gateway/src/launch/github.rs`
   GitHub OAuth completion, encrypted connection storage, repository sync, webhook installation, and push-triggered deployment orchestration
 - `services/api-gateway/src/workers/launch_deployments.rs`
@@ -97,6 +97,8 @@ LAUNCH_REGISTRY_NAMESPACE=launch
 LAUNCH_REGISTRY_USERNAME=launch-builder
 LAUNCH_REGISTRY_PASSWORD=...
 LAUNCH_BUILDER_WORKDIR=/tmp/nubis-launch-builds
+LAUNCH_RAILPACK_BINARY=railpack
+LAUNCH_RAILPACK_FRONTEND=ghcr.io/railwayapp/railpack-frontend
 ```
 
 3. Run migrations so both Launch migrations are applied:
@@ -129,7 +131,9 @@ http://localhost:8080/api/v1/launch/github/callback
 - GitHub is now the primary Launch source path. Users connect GitHub first, sync repositories into the organization cache, and Launch installs a repository-scoped push webhook when a GitHub-backed service is created.
 - Repository URL entry remains available as the manual fallback path for advanced or disconnected workflows.
 - Push webhooks create Launch deployments only for services whose tracked branch matches the pushed ref, and delivery handling is idempotent per service.
-- Dockerfile builds run through the Docker CLI, log into the configured registry, push OCI images, and record the pushed digest back onto the Launch deployment.
+- Launch prefers an explicitly configured Dockerfile when it exists, and otherwise falls back to Railpack autodetection so repositories like Next.js, Node, Python, Rust, Go, and static HTML/CSS apps can build without a handwritten Dockerfile.
+- Dockerfile and Railpack builds both run through the local builder host, log into the configured registry, push OCI images, and record the pushed digest back onto the Launch deployment.
+- Builder hosts must have both Docker with Buildx enabled and the `railpack` CLI available on `PATH` unless `LAUNCH_RAILPACK_BINARY` points to a custom location.
 - The runtime target remains Kubernetes. Web services are applied as `Deployment + Service + Ingress`, workers as `Deployment`, and cron services as `CronJob`.
 - Preview branches create isolated Launch preview environments and receive their own runtime URLs.
 - Custom domains are written through Cloudflare DNS and reconciled against the live Kubernetes ingress/TLS state so the dashboard reflects pending DNS, pending TLS, and live status from the runtime.
